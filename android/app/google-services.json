@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "616987414723",
+    "project_id": "bsvtech-b39ec",
+    "storage_bucket": "bsvtech-b39ec.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:616987414723:android:eabaf002748422d76c9276",
+        "android_client_info": {
+          "package_name": "com.bsvtech.shop"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZZwPerMgdlmIy79HPxG3F4AK4JXztpLY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
