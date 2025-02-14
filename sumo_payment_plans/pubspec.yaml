@@ -1,0 +1,23 @@
+name: sumo_payment_plans
+description: SUMO Payment Plans integration for Cirilla
+version: 0.0.1
+publish_to: 'none'
+
+environment:
+  sdk: '>=2.19.0 <4.0.0'
+  flutter: ">=3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  payment_base:
+    path: ../payment_base
+  http: ^1.1.0
+  json_annotation: ^4.8.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  build_runner: ^2.4.6
+  json_serializable: ^6.7.1
