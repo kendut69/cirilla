@@ -7,14 +7,14 @@ part of 'point_reward.dart';
 // **************************************************************************
 
 PointReward _$PointRewardFromJson(Map<String, dynamic> json) => PointReward(
-      pointsBalance: json['points_balance'] as int?,
+      pointsBalance: (json['points_balance'] as num?)?.toInt(),
       pointsLabel: json['points_label'] as String?,
       events: (json['events'] as List<dynamic>?)
           ?.map((e) => PointRewardEvent.fromJson(e as Map<String, dynamic>))
           .toList(),
       totalRows: json['total_rows'] as String?,
-      currentPage: json['current_page'] as int?,
-      count: json['count'] as int?,
+      currentPage: (json['current_page'] as num?)?.toInt(),
+      count: (json['count'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$PointRewardToJson(PointReward instance) =>

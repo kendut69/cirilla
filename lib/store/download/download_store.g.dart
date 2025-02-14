@@ -6,34 +6,44 @@ part of 'download_store.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$DownloadStore on DownloadStoreBase, Store {
   Computed<bool>? _$loadingComputed;
 
   @override
-  bool get loading => (_$loadingComputed ??= Computed<bool>(() => super.loading, name: '_DownloadStore.loading')).value;
+  bool get loading => (_$loadingComputed ??= Computed<bool>(() => super.loading,
+          name: 'DownloadStoreBase.loading'))
+      .value;
   Computed<ObservableList<Download>>? _$downloadsComputed;
 
   @override
   ObservableList<Download> get downloads => (_$downloadsComputed ??=
-          Computed<ObservableList<Download>>(() => super.downloads, name: '_DownloadStore.downloads'))
+          Computed<ObservableList<Download>>(() => super.downloads,
+              name: 'DownloadStoreBase.downloads'))
       .value;
   Computed<bool>? _$canLoadMoreComputed;
 
   @override
   bool get canLoadMore =>
-      (_$canLoadMoreComputed ??= Computed<bool>(() => super.canLoadMore, name: '_DownloadStore.canLoadMore')).value;
+      (_$canLoadMoreComputed ??= Computed<bool>(() => super.canLoadMore,
+              name: 'DownloadStoreBase.canLoadMore'))
+          .value;
   Computed<int>? _$perPageComputed;
 
   @override
-  int get perPage => (_$perPageComputed ??= Computed<int>(() => super.perPage, name: '_DownloadStore.perPage')).value;
+  int get perPage => (_$perPageComputed ??=
+          Computed<int>(() => super.perPage, name: 'DownloadStoreBase.perPage'))
+      .value;
   Computed<String>? _$langComputed;
 
   @override
-  String get lang => (_$langComputed ??= Computed<String>(() => super.lang, name: '_DownloadStore.lang')).value;
+  String get lang => (_$langComputed ??=
+          Computed<String>(() => super.lang, name: 'DownloadStoreBase.lang'))
+      .value;
 
-  final _$fetchDownloadsFutureAtom = Atom(name: '_DownloadStore.fetchDownloadsFuture');
+  late final _$fetchDownloadsFutureAtom =
+      Atom(name: 'DownloadStoreBase.fetchDownloadsFuture', context: context);
 
   @override
   ObservableFuture<List<Download>?> get fetchDownloadsFuture {
@@ -43,12 +53,14 @@ mixin _$DownloadStore on DownloadStoreBase, Store {
 
   @override
   set fetchDownloadsFuture(ObservableFuture<List<Download>?> value) {
-    _$fetchDownloadsFutureAtom.reportWrite(value, super.fetchDownloadsFuture, () {
+    _$fetchDownloadsFutureAtom.reportWrite(value, super.fetchDownloadsFuture,
+        () {
       super.fetchDownloadsFuture = value;
     });
   }
 
-  final _$_downloadsAtom = Atom(name: '_DownloadStore._downloads');
+  late final _$_downloadsAtom =
+      Atom(name: 'DownloadStoreBase._downloads', context: context);
 
   @override
   ObservableList<Download> get _downloads {
@@ -63,7 +75,8 @@ mixin _$DownloadStore on DownloadStoreBase, Store {
     });
   }
 
-  final _$successAtom = Atom(name: '_DownloadStore.success');
+  late final _$successAtom =
+      Atom(name: 'DownloadStoreBase.success', context: context);
 
   @override
   bool get success {
@@ -78,7 +91,8 @@ mixin _$DownloadStore on DownloadStoreBase, Store {
     });
   }
 
-  final _$_nextPageAtom = Atom(name: '_DownloadStore._nextPage');
+  late final _$_nextPageAtom =
+      Atom(name: 'DownloadStoreBase._nextPage', context: context);
 
   @override
   int get _nextPage {
@@ -93,7 +107,8 @@ mixin _$DownloadStore on DownloadStoreBase, Store {
     });
   }
 
-  final _$_perPageAtom = Atom(name: '_DownloadStore._perPage');
+  late final _$_perPageAtom =
+      Atom(name: 'DownloadStoreBase._perPage', context: context);
 
   @override
   int get _perPage {
@@ -108,7 +123,8 @@ mixin _$DownloadStore on DownloadStoreBase, Store {
     });
   }
 
-  final _$_langAtom = Atom(name: '_DownloadStore._lang');
+  late final _$_langAtom =
+      Atom(name: 'DownloadStoreBase._lang', context: context);
 
   @override
   String get _lang {
@@ -123,7 +139,8 @@ mixin _$DownloadStore on DownloadStoreBase, Store {
     });
   }
 
-  final _$_canLoadMoreAtom = Atom(name: '_DownloadStore._canLoadMore');
+  late final _$_canLoadMoreAtom =
+      Atom(name: 'DownloadStoreBase._canLoadMore', context: context);
 
   @override
   bool get _canLoadMore {
@@ -138,7 +155,8 @@ mixin _$DownloadStore on DownloadStoreBase, Store {
     });
   }
 
-  final _$_userIdAtom = Atom(name: '_DownloadStore._userId');
+  late final _$_userIdAtom =
+      Atom(name: 'DownloadStoreBase._userId', context: context);
 
   @override
   int get _userId {
@@ -153,22 +171,25 @@ mixin _$DownloadStore on DownloadStoreBase, Store {
     });
   }
 
-  final _$getDownloadsAsyncAction = AsyncAction('_DownloadStore.getDownloads');
+  late final _$getDownloadsAsyncAction =
+      AsyncAction('DownloadStoreBase.getDownloads', context: context);
 
   @override
   Future<void> getDownloads() {
     return _$getDownloadsAsyncAction.run(() => super.getDownloads());
   }
 
-  final _$_DownloadStoreActionController = ActionController(name: '_DownloadStore');
+  late final _$DownloadStoreBaseActionController =
+      ActionController(name: 'DownloadStoreBase', context: context);
 
   @override
   Future<void> refresh() {
-    final $actionInfo = _$_DownloadStoreActionController.startAction(name: '_DownloadStore.refresh');
+    final _$actionInfo = _$DownloadStoreBaseActionController.startAction(
+        name: 'DownloadStoreBase.refresh');
     try {
       return super.refresh();
     } finally {
-      _$_DownloadStoreActionController.endAction($actionInfo);
+      _$DownloadStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 

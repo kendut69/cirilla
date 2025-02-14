@@ -14,7 +14,8 @@ MessageData _$MessageDataFromJson(Map<String, dynamic> json) => MessageData(
       seen: ConvertData.stringToInt(json['seen']),
     );
 
-Map<String, dynamic> _$MessageDataToJson(MessageData instance) => <String, dynamic>{
+Map<String, dynamic> _$MessageDataToJson(MessageData instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'payload': instance.payload,
       'action': instance.action,

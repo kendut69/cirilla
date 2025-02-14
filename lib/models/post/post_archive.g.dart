@@ -12,7 +12,8 @@ PostArchive _$PostArchiveFromJson(Map<String, dynamic> json) => PostArchive(
       posts: json['posts'] as String?,
     );
 
-Map<String, dynamic> _$PostArchiveToJson(PostArchive instance) => <String, dynamic>{
+Map<String, dynamic> _$PostArchiveToJson(PostArchive instance) =>
+    <String, dynamic>{
       'year': instance.year,
       'month': instance.month,
       'posts': instance.posts,

@@ -7,7 +7,7 @@ part of 'order_node.dart';
 // **************************************************************************
 
 OrderNode _$OrderNodeFromJson(Map<String, dynamic> json) => OrderNode(
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
       dateCreated: json['date_created'] as String?,
       author: json['author'] as String?,
       note: json['note'] as String?,

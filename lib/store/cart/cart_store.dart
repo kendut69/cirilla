@@ -96,6 +96,13 @@ abstract class CartStoreBase with Store {
 
   @computed
   BaseState get loadingRemovePoint => _loadingRemovePoint;
+  @observable
+  bool isPaymentPlanEnabled = false;
+
+  @action
+  void setPaymentPlanEnabled(bool value) {
+    isPaymentPlanEnabled = value;
+  }
 
   // Action: -----------------------------------------------------------------------------------------------------------
   @action

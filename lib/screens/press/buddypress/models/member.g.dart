@@ -7,7 +7,7 @@ part of 'member.dart';
 // **************************************************************************
 
 BPMember _$BPMemberFromJson(Map<String, dynamic> json) => BPMember(
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
       name: json['name'] as String?,
       userLogin: json['user_login'] as String?,
       mentionName: json['mention_name'] as String?,
@@ -37,7 +37,7 @@ Map<String, dynamic> _$BPMemberToJson(BPMember instance) => <String, dynamic>{
 
 BPMemberProfile _$BPMemberProfileFromJson(Map<String, dynamic> json) =>
     BPMemberProfile(
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
       name: json['name'] as String?,
       fields: BPMemberProfile._fromField(json['fields']),
     );
@@ -52,7 +52,7 @@ Map<String, dynamic> _$BPMemberProfileToJson(BPMemberProfile instance) =>
 BPMemberProfileField _$BPMemberProfileFieldFromJson(
         Map<String, dynamic> json) =>
     BPMemberProfileField(
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
       name: json['name'] as String?,
       value: BPMemberProfileField._fromValue(json['value']),
     );

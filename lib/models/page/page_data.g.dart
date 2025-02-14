@@ -7,14 +7,14 @@ part of 'page_data.dart';
 // **************************************************************************
 
 PageData _$PageDataFromJson(Map<String, dynamic> json) => PageData(
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
       date: json['date'] as String?,
       modified: json['modified'] as String?,
       slug: json['slug'] as String?,
       status: json['status'] as String?,
       type: json['type'] as String?,
-      author: json['author'] as int?,
-      parent: json['parent'] as int?,
+      author: (json['author'] as num?)?.toInt(),
+      parent: (json['parent'] as num?)?.toInt(),
       blocks: json['blocks'] as List<dynamic>?,
     );
 

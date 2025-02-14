@@ -6,54 +6,66 @@ part of 'review_store.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$ProductReviewStore on ProductReviewStoreBase, Store {
   Computed<bool>? _$loadingComputed;
 
   @override
-  bool get loading =>
-      (_$loadingComputed ??= Computed<bool>(() => super.loading, name: '_ProductReviewStore.loading')).value;
+  bool get loading => (_$loadingComputed ??= Computed<bool>(() => super.loading,
+          name: 'ProductReviewStoreBase.loading'))
+      .value;
   Computed<int?>? _$productIdComputed;
 
   @override
   int? get productId =>
-      (_$productIdComputed ??= Computed<int?>(() => super.productId, name: '_ProductReviewStore.productId')).value;
+      (_$productIdComputed ??= Computed<int?>(() => super.productId,
+              name: 'ProductReviewStoreBase.productId'))
+          .value;
   Computed<int>? _$nextPageComputed;
 
   @override
   int get nextPage =>
-      (_$nextPageComputed ??= Computed<int>(() => super.nextPage, name: '_ProductReviewStore.nextPage')).value;
+      (_$nextPageComputed ??= Computed<int>(() => super.nextPage,
+              name: 'ProductReviewStoreBase.nextPage'))
+          .value;
   Computed<ObservableList<ProductReview>>? _$reviewsComputed;
 
   @override
   ObservableList<ProductReview> get reviews => (_$reviewsComputed ??=
-          Computed<ObservableList<ProductReview>>(() => super.reviews, name: '_ProductReviewStore.reviews'))
+          Computed<ObservableList<ProductReview>>(() => super.reviews,
+              name: 'ProductReviewStoreBase.reviews'))
       .value;
   Computed<bool>? _$canLoadMoreComputed;
 
   @override
   bool get canLoadMore =>
-      (_$canLoadMoreComputed ??= Computed<bool>(() => super.canLoadMore, name: '_ProductReviewStore.canLoadMore'))
+      (_$canLoadMoreComputed ??= Computed<bool>(() => super.canLoadMore,
+              name: 'ProductReviewStoreBase.canLoadMore'))
           .value;
   Computed<Map<dynamic, dynamic>>? _$sortComputed;
 
   @override
   Map<dynamic, dynamic> get sort =>
-      (_$sortComputed ??= Computed<Map<dynamic, dynamic>>(() => super.sort, name: '_ProductReviewStore.sort')).value;
+      (_$sortComputed ??= Computed<Map<dynamic, dynamic>>(() => super.sort,
+              name: 'ProductReviewStoreBase.sort'))
+          .value;
   Computed<int>? _$perPageComputed;
 
   @override
-  int get perPage =>
-      (_$perPageComputed ??= Computed<int>(() => super.perPage, name: '_ProductReviewStore.perPage')).value;
+  int get perPage => (_$perPageComputed ??= Computed<int>(() => super.perPage,
+          name: 'ProductReviewStoreBase.perPage'))
+      .value;
   Computed<RatingCount>? _$ratingCountComputed;
 
   @override
-  RatingCount get ratingCount => (_$ratingCountComputed ??=
-          Computed<RatingCount>(() => super.ratingCount, name: '_ProductReviewStore.ratingCount'))
-      .value;
+  RatingCount get ratingCount =>
+      (_$ratingCountComputed ??= Computed<RatingCount>(() => super.ratingCount,
+              name: 'ProductReviewStoreBase.ratingCount'))
+          .value;
 
-  final _$fetchReviewsFutureAtom = Atom(name: '_ProductReviewStore.fetchReviewsFuture');
+  late final _$fetchReviewsFutureAtom =
+      Atom(name: 'ProductReviewStoreBase.fetchReviewsFuture', context: context);
 
   @override
   ObservableFuture<List<ProductReview>?> get fetchReviewsFuture {
@@ -68,7 +80,8 @@ mixin _$ProductReviewStore on ProductReviewStoreBase, Store {
     });
   }
 
-  final _$_reviewsAtom = Atom(name: '_ProductReviewStore._reviews');
+  late final _$_reviewsAtom =
+      Atom(name: 'ProductReviewStoreBase._reviews', context: context);
 
   @override
   ObservableList<ProductReview> get _reviews {
@@ -83,7 +96,8 @@ mixin _$ProductReviewStore on ProductReviewStoreBase, Store {
     });
   }
 
-  final _$successAtom = Atom(name: '_ProductReviewStore.success');
+  late final _$successAtom =
+      Atom(name: 'ProductReviewStoreBase.success', context: context);
 
   @override
   bool get success {
@@ -98,7 +112,8 @@ mixin _$ProductReviewStore on ProductReviewStoreBase, Store {
     });
   }
 
-  final _$_perPageAtom = Atom(name: '_ProductReviewStore._perPage');
+  late final _$_perPageAtom =
+      Atom(name: 'ProductReviewStoreBase._perPage', context: context);
 
   @override
   int get _perPage {
@@ -113,7 +128,8 @@ mixin _$ProductReviewStore on ProductReviewStoreBase, Store {
     });
   }
 
-  final _$_productIdAtom = Atom(name: '_ProductReviewStore._productId');
+  late final _$_productIdAtom =
+      Atom(name: 'ProductReviewStoreBase._productId', context: context);
 
   @override
   int? get _productId {
@@ -128,7 +144,8 @@ mixin _$ProductReviewStore on ProductReviewStoreBase, Store {
     });
   }
 
-  final _$_langAtom = Atom(name: '_ProductReviewStore._lang');
+  late final _$_langAtom =
+      Atom(name: 'ProductReviewStoreBase._lang', context: context);
 
   @override
   String? get _lang {
@@ -143,7 +160,8 @@ mixin _$ProductReviewStore on ProductReviewStoreBase, Store {
     });
   }
 
-  final _$_nextPageAtom = Atom(name: '_ProductReviewStore._nextPage');
+  late final _$_nextPageAtom =
+      Atom(name: 'ProductReviewStoreBase._nextPage', context: context);
 
   @override
   int get _nextPage {
@@ -158,7 +176,8 @@ mixin _$ProductReviewStore on ProductReviewStoreBase, Store {
     });
   }
 
-  final _$_canLoadMoreAtom = Atom(name: '_ProductReviewStore._canLoadMore');
+  late final _$_canLoadMoreAtom =
+      Atom(name: 'ProductReviewStoreBase._canLoadMore', context: context);
 
   @override
   bool get _canLoadMore {
@@ -173,7 +192,8 @@ mixin _$ProductReviewStore on ProductReviewStoreBase, Store {
     });
   }
 
-  final _$_sortAtom = Atom(name: '_ProductReviewStore._sort');
+  late final _$_sortAtom =
+      Atom(name: 'ProductReviewStoreBase._sort', context: context);
 
   @override
   Map<dynamic, dynamic> get _sort {
@@ -188,7 +208,8 @@ mixin _$ProductReviewStore on ProductReviewStoreBase, Store {
     });
   }
 
-  final _$_ratingCountAtom = Atom(name: '_ProductReviewStore._ratingCount');
+  late final _$_ratingCountAtom =
+      Atom(name: 'ProductReviewStoreBase._ratingCount', context: context);
 
   @override
   RatingCount get _ratingCount {
@@ -203,7 +224,8 @@ mixin _$ProductReviewStore on ProductReviewStoreBase, Store {
     });
   }
 
-  final _$_includeAtom = Atom(name: '_ProductReviewStore._include');
+  late final _$_includeAtom =
+      Atom(name: 'ProductReviewStoreBase._include', context: context);
 
   @override
   ObservableList<int> get _include {
@@ -218,32 +240,37 @@ mixin _$ProductReviewStore on ProductReviewStoreBase, Store {
     });
   }
 
-  final _$getReviewsAsyncAction = AsyncAction('_ProductReviewStore.getReviews');
+  late final _$getReviewsAsyncAction =
+      AsyncAction('ProductReviewStoreBase.getReviews', context: context);
 
   @override
   Future<List<ProductReview>> getReviews() {
     return _$getReviewsAsyncAction.run(() => super.getReviews());
   }
 
-  final _$_ProductReviewStoreActionController = ActionController(name: '_ProductReviewStore');
+  late final _$ProductReviewStoreBaseActionController =
+      ActionController(name: 'ProductReviewStoreBase', context: context);
 
   @override
   Future<void> refresh() {
-    final $actionInfo = _$_ProductReviewStoreActionController.startAction(name: '_ProductReviewStore.refresh');
+    final _$actionInfo = _$ProductReviewStoreBaseActionController.startAction(
+        name: 'ProductReviewStoreBase.refresh');
     try {
       return super.refresh();
     } finally {
-      _$_ProductReviewStoreActionController.endAction($actionInfo);
+      _$ProductReviewStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void onChanged({Map<dynamic, dynamic>? sort, String? search, bool silent = false}) {
-    final $actionInfo = _$_ProductReviewStoreActionController.startAction(name: '_ProductReviewStore.onChanged');
+  void onChanged(
+      {Map<dynamic, dynamic>? sort, String? search, bool silent = false}) {
+    final _$actionInfo = _$ProductReviewStoreBaseActionController.startAction(
+        name: 'ProductReviewStoreBase.onChanged');
     try {
       return super.onChanged(sort: sort, search: search, silent: silent);
     } finally {
-      _$_ProductReviewStoreActionController.endAction($actionInfo);
+      _$ProductReviewStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 

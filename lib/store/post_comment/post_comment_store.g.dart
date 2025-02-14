@@ -6,36 +6,44 @@ part of 'post_comment_store.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$PostCommentStore on PostCommentStoreBase, Store {
   Computed<bool>? _$loadingComputed;
 
   @override
-  bool get loading =>
-      (_$loadingComputed ??= Computed<bool>(() => super.loading, name: '_PostCommentStore.loading')).value;
+  bool get loading => (_$loadingComputed ??= Computed<bool>(() => super.loading,
+          name: 'PostCommentStoreBase.loading'))
+      .value;
   Computed<ObservableList<PostComment>>? _$postCommentsComputed;
 
   @override
   ObservableList<PostComment> get postComments => (_$postCommentsComputed ??=
-          Computed<ObservableList<PostComment>>(() => super.postComments, name: '_PostCommentStore.postComments'))
+          Computed<ObservableList<PostComment>>(() => super.postComments,
+              name: 'PostCommentStoreBase.postComments'))
       .value;
   Computed<bool>? _$canLoadMoreComputed;
 
   @override
   bool get canLoadMore =>
-      (_$canLoadMoreComputed ??= Computed<bool>(() => super.canLoadMore, name: '_PostCommentStore.canLoadMore')).value;
+      (_$canLoadMoreComputed ??= Computed<bool>(() => super.canLoadMore,
+              name: 'PostCommentStoreBase.canLoadMore'))
+          .value;
   Computed<int>? _$perPageComputed;
 
   @override
-  int get perPage =>
-      (_$perPageComputed ??= Computed<int>(() => super.perPage, name: '_PostCommentStore.perPage')).value;
+  int get perPage => (_$perPageComputed ??= Computed<int>(() => super.perPage,
+          name: 'PostCommentStoreBase.perPage'))
+      .value;
   Computed<String>? _$langComputed;
 
   @override
-  String get lang => (_$langComputed ??= Computed<String>(() => super.lang, name: '_PostCommentStore.lang')).value;
+  String get lang => (_$langComputed ??=
+          Computed<String>(() => super.lang, name: 'PostCommentStoreBase.lang'))
+      .value;
 
-  final _$fetchPostCommentsFutureAtom = Atom(name: '_PostCommentStore.fetchPostCommentsFuture');
+  late final _$fetchPostCommentsFutureAtom = Atom(
+      name: 'PostCommentStoreBase.fetchPostCommentsFuture', context: context);
 
   @override
   ObservableFuture<List<PostComment>?> get fetchPostCommentsFuture {
@@ -45,12 +53,14 @@ mixin _$PostCommentStore on PostCommentStoreBase, Store {
 
   @override
   set fetchPostCommentsFuture(ObservableFuture<List<PostComment>?> value) {
-    _$fetchPostCommentsFutureAtom.reportWrite(value, super.fetchPostCommentsFuture, () {
+    _$fetchPostCommentsFutureAtom
+        .reportWrite(value, super.fetchPostCommentsFuture, () {
       super.fetchPostCommentsFuture = value;
     });
   }
 
-  final _$_postCommentsAtom = Atom(name: '_PostCommentStore._postComments');
+  late final _$_postCommentsAtom =
+      Atom(name: 'PostCommentStoreBase._postComments', context: context);
 
   @override
   ObservableList<PostComment> get _postComments {
@@ -65,7 +75,8 @@ mixin _$PostCommentStore on PostCommentStoreBase, Store {
     });
   }
 
-  final _$successAtom = Atom(name: '_PostCommentStore.success');
+  late final _$successAtom =
+      Atom(name: 'PostCommentStoreBase.success', context: context);
 
   @override
   bool get success {
@@ -80,7 +91,8 @@ mixin _$PostCommentStore on PostCommentStoreBase, Store {
     });
   }
 
-  final _$_postAtom = Atom(name: '_PostCommentStore._post');
+  late final _$_postAtom =
+      Atom(name: 'PostCommentStoreBase._post', context: context);
 
   @override
   int? get _post {
@@ -95,7 +107,8 @@ mixin _$PostCommentStore on PostCommentStoreBase, Store {
     });
   }
 
-  final _$_parentAtom = Atom(name: '_PostCommentStore._parent');
+  late final _$_parentAtom =
+      Atom(name: 'PostCommentStoreBase._parent', context: context);
 
   @override
   int get _parent {
@@ -110,7 +123,8 @@ mixin _$PostCommentStore on PostCommentStoreBase, Store {
     });
   }
 
-  final _$_nextPageAtom = Atom(name: '_PostCommentStore._nextPage');
+  late final _$_nextPageAtom =
+      Atom(name: 'PostCommentStoreBase._nextPage', context: context);
 
   @override
   int get _nextPage {
@@ -125,7 +139,8 @@ mixin _$PostCommentStore on PostCommentStoreBase, Store {
     });
   }
 
-  final _$_perPageAtom = Atom(name: '_PostCommentStore._perPage');
+  late final _$_perPageAtom =
+      Atom(name: 'PostCommentStoreBase._perPage', context: context);
 
   @override
   int get _perPage {
@@ -140,7 +155,8 @@ mixin _$PostCommentStore on PostCommentStoreBase, Store {
     });
   }
 
-  final _$_langAtom = Atom(name: '_PostCommentStore._lang');
+  late final _$_langAtom =
+      Atom(name: 'PostCommentStoreBase._lang', context: context);
 
   @override
   String get _lang {
@@ -155,7 +171,8 @@ mixin _$PostCommentStore on PostCommentStoreBase, Store {
     });
   }
 
-  final _$_orderAtom = Atom(name: '_PostCommentStore._order');
+  late final _$_orderAtom =
+      Atom(name: 'PostCommentStoreBase._order', context: context);
 
   @override
   String get _order {
@@ -170,7 +187,8 @@ mixin _$PostCommentStore on PostCommentStoreBase, Store {
     });
   }
 
-  final _$_orderByAtom = Atom(name: '_PostCommentStore._orderBy');
+  late final _$_orderByAtom =
+      Atom(name: 'PostCommentStoreBase._orderBy', context: context);
 
   @override
   String get _orderBy {
@@ -185,7 +203,8 @@ mixin _$PostCommentStore on PostCommentStoreBase, Store {
     });
   }
 
-  final _$_canLoadMoreAtom = Atom(name: '_PostCommentStore._canLoadMore');
+  late final _$_canLoadMoreAtom =
+      Atom(name: 'PostCommentStoreBase._canLoadMore', context: context);
 
   @override
   bool get _canLoadMore {
@@ -200,32 +219,36 @@ mixin _$PostCommentStore on PostCommentStoreBase, Store {
     });
   }
 
-  final _$getPostCommentsAsyncAction = AsyncAction('_PostCommentStore.getPostComments');
+  late final _$getPostCommentsAsyncAction =
+      AsyncAction('PostCommentStoreBase.getPostComments', context: context);
 
   @override
   Future<void> getPostComments() {
     return _$getPostCommentsAsyncAction.run(() => super.getPostComments());
   }
 
-  final _$_PostCommentStoreActionController = ActionController(name: '_PostCommentStore');
+  late final _$PostCommentStoreBaseActionController =
+      ActionController(name: 'PostCommentStoreBase', context: context);
 
   @override
   Future<void> refresh() {
-    final $actionInfo = _$_PostCommentStoreActionController.startAction(name: '_PostCommentStore.refresh');
+    final _$actionInfo = _$PostCommentStoreBaseActionController.startAction(
+        name: 'PostCommentStoreBase.refresh');
     try {
       return super.refresh();
     } finally {
-      _$_PostCommentStoreActionController.endAction($actionInfo);
+      _$PostCommentStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void onChange({int? parent}) {
-    final $actionInfo = _$_PostCommentStoreActionController.startAction(name: '_PostCommentStore.onChange');
+    final _$actionInfo = _$PostCommentStoreBaseActionController.startAction(
+        name: 'PostCommentStoreBase.onChange');
     try {
       return super.onChange(parent: parent);
     } finally {
-      _$_PostCommentStoreActionController.endAction($actionInfo);
+      _$PostCommentStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 

@@ -6,22 +6,26 @@ part of 'location_store.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$LocationStore on LocationStoreBase, Store {
   Computed<UserLocation>? _$locationComputed;
 
   @override
   UserLocation get location =>
-      (_$locationComputed ??= Computed<UserLocation>(() => super.location, name: '_LocationStore.location')).value;
+      (_$locationComputed ??= Computed<UserLocation>(() => super.location,
+              name: 'LocationStoreBase.location'))
+          .value;
   Computed<ObservableList<UserLocation>>? _$locationsComputed;
 
   @override
   ObservableList<UserLocation> get locations => (_$locationsComputed ??=
-          Computed<ObservableList<UserLocation>>(() => super.locations, name: '_LocationStore.locations'))
+          Computed<ObservableList<UserLocation>>(() => super.locations,
+              name: 'LocationStoreBase.locations'))
       .value;
 
-  final _$_locationAtom = Atom(name: '_LocationStore._location');
+  late final _$_locationAtom =
+      Atom(name: 'LocationStoreBase._location', context: context);
 
   @override
   UserLocation get _location {
@@ -36,7 +40,8 @@ mixin _$LocationStore on LocationStoreBase, Store {
     });
   }
 
-  final _$_locationsAtom = Atom(name: '_LocationStore._locations');
+  late final _$_locationsAtom =
+      Atom(name: 'LocationStoreBase._locations', context: context);
 
   @override
   ObservableList<UserLocation> get _locations {
@@ -51,32 +56,39 @@ mixin _$LocationStore on LocationStoreBase, Store {
     });
   }
 
-  final _$setLocationAsyncAction = AsyncAction('_LocationStore.setLocation');
+  late final _$setLocationAsyncAction =
+      AsyncAction('LocationStoreBase.setLocation', context: context);
 
   @override
   Future<void> setLocation({required UserLocation location}) {
-    return _$setLocationAsyncAction.run(() => super.setLocation(location: location));
+    return _$setLocationAsyncAction
+        .run(() => super.setLocation(location: location));
   }
 
-  final _$saveLocationAsyncAction = AsyncAction('_LocationStore.saveLocation');
+  late final _$saveLocationAsyncAction =
+      AsyncAction('LocationStoreBase.saveLocation', context: context);
 
   @override
   Future<void> saveLocation({required UserLocation location}) {
-    return _$saveLocationAsyncAction.run(() => super.saveLocation(location: location));
+    return _$saveLocationAsyncAction
+        .run(() => super.saveLocation(location: location));
   }
 
-  final _$deleteLocationAsyncAction = AsyncAction('_LocationStore.deleteLocation');
+  late final _$deleteLocationAsyncAction =
+      AsyncAction('LocationStoreBase.deleteLocation', context: context);
 
   @override
   Future<void> deleteLocation({required String id}) {
     return _$deleteLocationAsyncAction.run(() => super.deleteLocation(id: id));
   }
 
-  final _$editLocationAsyncAction = AsyncAction('_LocationStore.editLocation');
+  late final _$editLocationAsyncAction =
+      AsyncAction('LocationStoreBase.editLocation', context: context);
 
   @override
   Future<void> editLocation({required UserLocation location}) {
-    return _$editLocationAsyncAction.run(() => super.editLocation(location: location));
+    return _$editLocationAsyncAction
+        .run(() => super.editLocation(location: location));
   }
 
   @override

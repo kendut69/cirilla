@@ -7,8 +7,8 @@ part of 'order.dart';
 // **************************************************************************
 
 OrderData _$OrderDataFromJson(Map<String, dynamic> json) => OrderData(
-      id: json['id'] as int?,
-      parentId: json['parent_id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
+      parentId: (json['parent_id'] as num?)?.toInt(),
       status: json['status'] as String?,
       dateCreated: json['date_created'] as String?,
       totalTax: json['total_tax'] as String?,
@@ -20,7 +20,7 @@ OrderData _$OrderDataFromJson(Map<String, dynamic> json) => OrderData(
       total: json['total'] as String?,
       currencySymbol: json['currency_symbol'] as String?,
       currency: json['currency'] as String?,
-      paymentMethodTitle: json['payment_method_title'] as String?,
+      MethodTitle: json['_method_title'] as String?,
       metaData: (json['meta_data'] as List<dynamic>?)
           ?.map((e) => e as Map<String, dynamic>)
           .toList(),
@@ -44,7 +44,7 @@ Map<String, dynamic> _$OrderDataToJson(OrderData instance) => <String, dynamic>{
       'discount_total': instance.discountTotal,
       'discount_tax': instance.discountTax,
       'currency_symbol': instance.currencySymbol,
-      'payment_method_title': instance.paymentMethodTitle,
+      '_method_title': instance.MethodTitle,
       'date_created': instance.dateCreated,
       'line_items': instance.lineItems,
       'shipping_lines': instance.shippingLines,
@@ -70,14 +70,14 @@ Map<String, dynamic> _$ShippingLinesToJson(ShippingLines instance) =>
 
 LineItems _$LineItemsFromJson(Map<String, dynamic> json) => LineItems(
       name: json['name'] as String?,
-      quantity: json['quantity'] as int?,
+      quantity: (json['quantity'] as num?)?.toInt(),
       price: (json['price'] as num?)?.toDouble(),
       subtotal: json['subtotal'] as String?,
       metaData: (json['meta_data'] as List<dynamic>?)
           ?.map((e) => e as Map<String, dynamic>)
           .toList(),
       sku: json['sku'] as String?,
-      productId: json['product_id'] as int?,
+      productId: (json['product_id'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$LineItemsToJson(LineItems instance) => <String, dynamic>{

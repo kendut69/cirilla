@@ -7,14 +7,14 @@ part of 'post_tag.dart';
 // **************************************************************************
 
 PostTag _$PostTagFromJson(Map<String, dynamic> json) => PostTag(
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
       name: json['name'] as String?,
       slug: json['slug'] as String?,
       description: json['description'] as String?,
       link: json['link'] as String?,
       taxonomy: json['taxonomy'] as String?,
       meta: json['meta'] as List<dynamic>?,
-      count: json['count'] as int?,
+      count: (json['count'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$PostTagToJson(PostTag instance) => <String, dynamic>{

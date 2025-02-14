@@ -6,20 +6,25 @@ part of 'customer_store.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$CustomerStore on CustomerStoreBase, Store {
   Computed<Customer?>? _$customerComputed;
 
   @override
   Customer? get customer =>
-      (_$customerComputed ??= Computed<Customer?>(() => super.customer, name: '_CustomerStore.customer')).value;
+      (_$customerComputed ??= Computed<Customer?>(() => super.customer,
+              name: 'CustomerStoreBase.customer'))
+          .value;
   Computed<bool>? _$loadingComputed;
 
   @override
-  bool get loading => (_$loadingComputed ??= Computed<bool>(() => super.loading, name: '_CustomerStore.loading')).value;
+  bool get loading => (_$loadingComputed ??= Computed<bool>(() => super.loading,
+          name: 'CustomerStoreBase.loading'))
+      .value;
 
-  final _$_customerAtom = Atom(name: '_CustomerStore._customer');
+  late final _$_customerAtom =
+      Atom(name: 'CustomerStoreBase._customer', context: context);
 
   @override
   Customer? get _customer {
@@ -34,7 +39,8 @@ mixin _$CustomerStore on CustomerStoreBase, Store {
     });
   }
 
-  final _$_loadingAtom = Atom(name: '_CustomerStore._loading');
+  late final _$_loadingAtom =
+      Atom(name: 'CustomerStoreBase._loading', context: context);
 
   @override
   bool get _loading {
@@ -49,18 +55,23 @@ mixin _$CustomerStore on CustomerStoreBase, Store {
     });
   }
 
-  final _$getCustomerAsyncAction = AsyncAction('_CustomerStore.getCustomer');
+  late final _$getCustomerAsyncAction =
+      AsyncAction('CustomerStoreBase.getCustomer', context: context);
 
   @override
   Future<void> getCustomer({required String userId}) {
-    return _$getCustomerAsyncAction.run(() => super.getCustomer(userId: userId));
+    return _$getCustomerAsyncAction
+        .run(() => super.getCustomer(userId: userId));
   }
 
-  final _$updateCustomerAsyncAction = AsyncAction('_CustomerStore.updateCustomer');
+  late final _$updateCustomerAsyncAction =
+      AsyncAction('CustomerStoreBase.updateCustomer', context: context);
 
   @override
-  Future<void> updateCustomer({required String userId, Map<String, dynamic>? data}) {
-    return _$updateCustomerAsyncAction.run(() => super.updateCustomer(userId: userId, data: data));
+  Future<void> updateCustomer(
+      {required String userId, Map<String, dynamic>? data}) {
+    return _$updateCustomerAsyncAction
+        .run(() => super.updateCustomer(userId: userId, data: data));
   }
 
   @override

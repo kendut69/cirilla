@@ -6,22 +6,26 @@ part of 'address_field_store.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$AddressFieldStore on AddressFieldStoreBase, Store {
   Computed<ObservableMap<String, dynamic>>? _$addressFieldsComputed;
 
   @override
-  ObservableMap<String, dynamic> get addressFields => (_$addressFieldsComputed ??=
-          Computed<ObservableMap<String, dynamic>>(() => super.addressFields, name: '_AddressFieldStore.addressFields'))
-      .value;
+  ObservableMap<String, dynamic> get addressFields =>
+      (_$addressFieldsComputed ??= Computed<ObservableMap<String, dynamic>>(
+              () => super.addressFields,
+              name: 'AddressFieldStoreBase.addressFields'))
+          .value;
   Computed<bool>? _$loadingComputed;
 
   @override
-  bool get loading =>
-      (_$loadingComputed ??= Computed<bool>(() => super.loading, name: '_AddressFieldStore.loading')).value;
+  bool get loading => (_$loadingComputed ??= Computed<bool>(() => super.loading,
+          name: 'AddressFieldStoreBase.loading'))
+      .value;
 
-  final _$_addressFieldsAtom = Atom(name: '_AddressFieldStore._addressFields');
+  late final _$_addressFieldsAtom =
+      Atom(name: 'AddressFieldStoreBase._addressFields', context: context);
 
   @override
   ObservableMap<String, dynamic> get _addressFields {
@@ -36,7 +40,8 @@ mixin _$AddressFieldStore on AddressFieldStoreBase, Store {
     });
   }
 
-  final _$_loadingAtom = Atom(name: '_AddressFieldStore._loading');
+  late final _$_loadingAtom =
+      Atom(name: 'AddressFieldStoreBase._loading', context: context);
 
   @override
   bool get _loading {
@@ -51,11 +56,13 @@ mixin _$AddressFieldStore on AddressFieldStoreBase, Store {
     });
   }
 
-  final _$getAddressFieldAsyncAction = AsyncAction('_AddressFieldStore.getAddressField');
+  late final _$getAddressFieldAsyncAction =
+      AsyncAction('AddressFieldStoreBase.getAddressField', context: context);
 
   @override
   Future<void> getAddressField({Map<String, dynamic>? queryParameters}) {
-    return _$getAddressFieldAsyncAction.run(() => super.getAddressField(queryParameters: queryParameters));
+    return _$getAddressFieldAsyncAction
+        .run(() => super.getAddressField(queryParameters: queryParameters));
   }
 
   @override

@@ -7,15 +7,16 @@ part of 'post_category.dart';
 // **************************************************************************
 
 PostCategory _$PostCategoryFromJson(Map<String, dynamic> json) => PostCategory(
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
       name: unescape(json['name']),
-      count: json['count'] as int?,
-      parent: json['parent'] as int?,
+      count: (json['count'] as num?)?.toInt(),
+      parent: (json['parent'] as num?)?.toInt(),
       description: json['description'] as String?,
       slug: json['slug'] as String?,
     )..image = PostCategory._imageFromJson(json['acf']);
 
-Map<String, dynamic> _$PostCategoryToJson(PostCategory instance) => <String, dynamic>{
+Map<String, dynamic> _$PostCategoryToJson(PostCategory instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'count': instance.count,

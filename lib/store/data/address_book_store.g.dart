@@ -6,34 +6,39 @@ part of 'address_book_store.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$AddressBookStore on AddressBookStoreBase, Store {
   Computed<AddressBook?>? _$addressBookComputed;
 
   @override
-  AddressBook? get addressBook => (_$addressBookComputed ??=
-          Computed<AddressBook?>(() => super.addressBook, name: 'AddressBookStoreBase.addressBook'))
-      .value;
+  AddressBook? get addressBook =>
+      (_$addressBookComputed ??= Computed<AddressBook?>(() => super.addressBook,
+              name: 'AddressBookStoreBase.addressBook'))
+          .value;
   Computed<bool>? _$loadingComputed;
 
   @override
-  bool get loading =>
-      (_$loadingComputed ??= Computed<bool>(() => super.loading, name: 'AddressBookStoreBase.loading')).value;
+  bool get loading => (_$loadingComputed ??= Computed<bool>(() => super.loading,
+          name: 'AddressBookStoreBase.loading'))
+      .value;
   Computed<bool>? _$loadingPrimaryComputed;
 
   @override
-  bool get loadingPrimary => (_$loadingPrimaryComputed ??=
-          Computed<bool>(() => super.loadingPrimary, name: 'AddressBookStoreBase.loadingPrimary'))
-      .value;
+  bool get loadingPrimary =>
+      (_$loadingPrimaryComputed ??= Computed<bool>(() => super.loadingPrimary,
+              name: 'AddressBookStoreBase.loadingPrimary'))
+          .value;
   Computed<bool>? _$loadingDeleteComputed;
 
   @override
-  bool get loadingDelete => (_$loadingDeleteComputed ??=
-          Computed<bool>(() => super.loadingDelete, name: 'AddressBookStoreBase.loadingDelete'))
-      .value;
+  bool get loadingDelete =>
+      (_$loadingDeleteComputed ??= Computed<bool>(() => super.loadingDelete,
+              name: 'AddressBookStoreBase.loadingDelete'))
+          .value;
 
-  final _$_addressBookAtom = Atom(name: 'AddressBookStoreBase._addressBook');
+  late final _$_addressBookAtom =
+      Atom(name: 'AddressBookStoreBase._addressBook', context: context);
 
   @override
   AddressBook? get _addressBook {
@@ -48,7 +53,8 @@ mixin _$AddressBookStore on AddressBookStoreBase, Store {
     });
   }
 
-  final _$_loadingAtom = Atom(name: 'AddressBookStoreBase._loading');
+  late final _$_loadingAtom =
+      Atom(name: 'AddressBookStoreBase._loading', context: context);
 
   @override
   bool get _loading {
@@ -63,7 +69,8 @@ mixin _$AddressBookStore on AddressBookStoreBase, Store {
     });
   }
 
-  final _$_loadingPrimaryAtom = Atom(name: 'AddressBookStoreBase._loadingPrimary');
+  late final _$_loadingPrimaryAtom =
+      Atom(name: 'AddressBookStoreBase._loadingPrimary', context: context);
 
   @override
   bool get _loadingPrimary {
@@ -78,7 +85,8 @@ mixin _$AddressBookStore on AddressBookStoreBase, Store {
     });
   }
 
-  final _$_loadingDeleteAtom = Atom(name: 'AddressBookStoreBase._loadingDelete');
+  late final _$_loadingDeleteAtom =
+      Atom(name: 'AddressBookStoreBase._loadingDelete', context: context);
 
   @override
   bool get _loadingDelete {
@@ -93,32 +101,45 @@ mixin _$AddressBookStore on AddressBookStoreBase, Store {
     });
   }
 
-  final _$getAddressBookAsyncAction = AsyncAction('AddressBookStoreBase.getAddressBook');
-
-  @override
-  Future<void> getAddressBook({Map<String, dynamic>? queryParameters}) {
-    return _$getAddressBookAsyncAction.run(() => super.getAddressBook(queryParameters: queryParameters));
-  }
-
-  final _$getAddressAsyncAction = AsyncAction('AddressBookStoreBase.getAddress');
+  late final _$getAddressAsyncAction =
+      AsyncAction('AddressBookStoreBase.getAddress', context: context);
 
   @override
   Future<void> getAddress({Map<String, dynamic>? queryParameters}) {
-    return _$getAddressAsyncAction.run(() => super.getAddress(queryParameters: queryParameters));
+    return _$getAddressAsyncAction
+        .run(() => super.getAddress(queryParameters: queryParameters));
   }
 
-  final _$changePrimaryBookAsyncAction = AsyncAction('AddressBookStoreBase.changePrimaryBook');
+  late final _$changePrimaryBookAsyncAction =
+      AsyncAction('AddressBookStoreBase.changePrimaryBook', context: context);
 
   @override
   Future<void> changePrimaryBook(String key) {
-    return _$changePrimaryBookAsyncAction.run(() => super.changePrimaryBook(key));
+    return _$changePrimaryBookAsyncAction
+        .run(() => super.changePrimaryBook(key));
   }
 
-  final _$deleteAddressBookAsyncAction = AsyncAction('AddressBookStoreBase.deleteAddressBook');
+  late final _$deleteAddressBookAsyncAction =
+      AsyncAction('AddressBookStoreBase.deleteAddressBook', context: context);
 
   @override
   Future<void> deleteAddressBook(String key) {
-    return _$deleteAddressBookAsyncAction.run(() => super.deleteAddressBook(key));
+    return _$deleteAddressBookAsyncAction
+        .run(() => super.deleteAddressBook(key));
+  }
+
+  late final _$AddressBookStoreBaseActionController =
+      ActionController(name: 'AddressBookStoreBase', context: context);
+
+  @override
+  Future<void> getAddressBook({Map<String, dynamic>? queryParameters}) {
+    final _$actionInfo = _$AddressBookStoreBaseActionController.startAction(
+        name: 'AddressBookStoreBase.getAddressBook');
+    try {
+      return super.getAddressBook(queryParameters: queryParameters);
+    } finally {
+      _$AddressBookStoreBaseActionController.endAction(_$actionInfo);
+    }
   }
 
   @override

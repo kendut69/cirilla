@@ -8,7 +8,7 @@ part of 'user.dart';
 
 BMUser _$BMUserFromJson(Map<String, dynamic> json) => BMUser(
       id: ConvertData.stringToInt(json['id']),
-      userId: json['user_id'] as int?,
+      userId: (json['user_id'] as num?)?.toInt(),
       name: json['name'] as String?,
       avatar: json['avatar'] as String?,
     );

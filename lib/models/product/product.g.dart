@@ -7,7 +7,7 @@ part of 'product.dart';
 // **************************************************************************
 
 Product _$ProductFromJson(Map<String, dynamic> json) => Product(
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
       name: unescape(json['name']),
       slug: json['slug'] as String?,
       type: json['type'] as String?,
@@ -22,7 +22,7 @@ Product _$ProductFromJson(Map<String, dynamic> json) => Product(
       onSale: json['on_sale'] as bool?,
       date: json['date_created'] as String?,
       averageRating: json['average_rating'] as String?,
-      ratingCount: json['rating_count'] as int?,
+      ratingCount: (json['rating_count'] as num?)?.toInt(),
       formatPrice: json['format_price'] == null
           ? null
           : ProductPriceFormat.fromJson(
@@ -30,13 +30,13 @@ Product _$ProductFromJson(Map<String, dynamic> json) => Product(
       catalogVisibility: json['catalog_visibility'] as String?,
       stockStatus: json['stock_status'] as String?,
       manageStock: json['manage_stock'] as bool? ?? false,
-      stockQuantity: json['stock_quantity'] as int? ?? 0,
+      stockQuantity: (json['stock_quantity'] as num?)?.toInt() ?? 0,
       totalSales:
           json['total_sales'] == null ? 0 : Product._toInt(json['total_sales']),
       relatedIds: Product._toListInt(json['related_ids']),
       upsellIds: Product._toListInt(json['upsell_ids']),
       groupedIds: (json['grouped_products'] as List<dynamic>?)
-          ?.map((e) => e as int)
+          ?.map((e) => (e as num).toInt())
           .toList(),
       categories: (json['categories'] as List<dynamic>?)
           ?.map((e) => e == null
@@ -53,7 +53,7 @@ Product _$ProductFromJson(Map<String, dynamic> json) => Product(
       defaultAttributes: (json['default_attributes'] as List<dynamic>?)
           ?.map((e) => e as Map<String, dynamic>)
           .toList(),
-      parentId: json['parent_id'] as int? ?? 0,
+      parentId: (json['parent_id'] as num?)?.toInt() ?? 0,
       metaData: (json['meta_data'] as List<dynamic>?)
           ?.map((e) => e as Map<String, dynamic>)
           .toList(),

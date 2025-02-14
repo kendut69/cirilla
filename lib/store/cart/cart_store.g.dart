@@ -82,6 +82,13 @@ mixin _$CartStore on CartStoreBase, Store {
           () => super.loadingRemoveCart,
           name: 'CartStoreBase.loadingRemoveCart'))
       .value;
+  Computed<BaseState>? _$loadingRemovePointComputed;
+
+  @override
+  BaseState get loadingRemovePoint => (_$loadingRemovePointComputed ??=
+          Computed<BaseState>(() => super.loadingRemovePoint,
+              name: 'CartStoreBase.loadingRemovePoint'))
+      .value;
 
   late final _$_loadingAtom =
       Atom(name: 'CartStoreBase._loading', context: context);
@@ -243,6 +250,39 @@ mixin _$CartStore on CartStoreBase, Store {
     });
   }
 
+  late final _$_loadingRemovePointAtom =
+      Atom(name: 'CartStoreBase._loadingRemovePoint', context: context);
+
+  @override
+  BaseState get _loadingRemovePoint {
+    _$_loadingRemovePointAtom.reportRead();
+    return super._loadingRemovePoint;
+  }
+
+  @override
+  set _loadingRemovePoint(BaseState value) {
+    _$_loadingRemovePointAtom.reportWrite(value, super._loadingRemovePoint, () {
+      super._loadingRemovePoint = value;
+    });
+  }
+
+  late final _$isPaymentPlanEnabledAtom =
+      Atom(name: 'CartStoreBase.isPaymentPlanEnabled', context: context);
+
+  @override
+  bool get isPaymentPlanEnabled {
+    _$isPaymentPlanEnabledAtom.reportRead();
+    return super.isPaymentPlanEnabled;
+  }
+
+  @override
+  set isPaymentPlanEnabled(bool value) {
+    _$isPaymentPlanEnabledAtom.reportWrite(value, super.isPaymentPlanEnabled,
+        () {
+      super.isPaymentPlanEnabled = value;
+    });
+  }
+
   late final _$setCartKeyAsyncAction =
       AsyncAction('CartStoreBase.setCartKey', context: context);
 
@@ -345,9 +385,45 @@ mixin _$CartStore on CartStoreBase, Store {
     return _$addToCartAsyncAction.run(() => super.addToCart(data));
   }
 
+  late final _$applyPointDiscountAsyncAction =
+      AsyncAction('CartStoreBase.applyPointDiscount', context: context);
+
+  @override
+  Future<void> applyPointDiscount(
+      {required String value, required String cartKey}) {
+    return _$applyPointDiscountAsyncAction
+        .run(() => super.applyPointDiscount(value: value, cartKey: cartKey));
+  }
+
+  late final _$CartStoreBaseActionController =
+      ActionController(name: 'CartStoreBase', context: context);
+
+  @override
+  void setPaymentPlanEnabled(bool value) {
+    final _$actionInfo = _$CartStoreBaseActionController.startAction(
+        name: 'CartStoreBase.setPaymentPlanEnabled');
+    try {
+      return super.setPaymentPlanEnabled(value);
+    } finally {
+      _$CartStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeRemovePointState(BaseState value) {
+    final _$actionInfo = _$CartStoreBaseActionController.startAction(
+        name: 'CartStoreBase.changeRemovePointState');
+    try {
+      return super.changeRemovePointState(value);
+    } finally {
+      _$CartStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
+isPaymentPlanEnabled: ${isPaymentPlanEnabled},
 canLoadMore: ${canLoadMore},
 loading: ${loading},
 pending: ${pending},
@@ -358,7 +434,8 @@ cartData: ${cartData},
 count: ${count},
 cartKey: ${cartKey},
 cartNonce: ${cartNonce},
-loadingRemoveCart: ${loadingRemoveCart}
+loadingRemoveCart: ${loadingRemoveCart},
+loadingRemovePoint: ${loadingRemovePoint}
     ''';
   }
 }

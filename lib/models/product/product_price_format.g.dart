@@ -14,7 +14,7 @@ ProductPriceFormat _$ProductPriceFormatFromJson(Map<String, dynamic> json) {
   return ProductPriceFormat(
     regularPrice: json['regular_price'] as String? ?? '0.0',
     salePrice: json['sale_price'] as String?,
-    percent: json['percent'] as int?,
+    percent: (json['percent'] as num?)?.toInt(),
   );
 }
 

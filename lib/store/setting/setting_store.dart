@@ -52,7 +52,8 @@ abstract class SettingStoreBase with Store {
 
   // Store variables: --------------------------------------------------------------------------------------------------
   @observable
-  ObservableList<Language> _supportedLanguages = ObservableList<Language>.of(defaultLanguageSupport);
+  ObservableList<Language> _supportedLanguages =
+      ObservableList<Language>.of(defaultLanguageSupport);
 
   // Default language
   @observable
@@ -68,14 +69,16 @@ abstract class SettingStoreBase with Store {
   bool _loading = true;
 
   @observable
-  ObservableList<String?> tabs = ObservableList<String?>.of([Strings.tabActive]);
+  ObservableList<String?> tabs =
+      ObservableList<String?>.of([Strings.tabActive]);
 
   @observable
   DataScreen? _data;
 
   // Currency
   @observable
-  ObservableMap<String, dynamic> _currencies = ObservableMap<String, dynamic>.of({});
+  ObservableMap<String, dynamic> _currencies =
+      ObservableMap<String, dynamic>.of({});
 
   // Default currency
   @observable
@@ -101,6 +104,9 @@ abstract class SettingStoreBase with Store {
 
   @observable
   Features _features = Features.defaultData;
+
+  @observable
+  String _domain = ''; // Tambahkan properti domain
 
   // Computed: ---------------------------------------------------------------------------------------------------------
   @computed
@@ -163,6 +169,9 @@ abstract class SettingStoreBase with Store {
 
   @computed
   Features get features => _features;
+
+  @computed
+  String get domain => _domain; // Tambahkan getter untuk domain
 
   // Actions: ----------------------------------------------------------------------------------------------------------
   @action
@@ -228,7 +237,8 @@ abstract class SettingStoreBase with Store {
   @action
   Future<void> getSetting([CachePolicy? cachePolicy]) async {
     try {
-      Map<String, dynamic> settings = await _requestHelper.getSettings(cachePolicy: cachePolicy);
+      Map<String, dynamic> settings =
+          await _requestHelper.getSettings(cachePolicy: cachePolicy);
       setSetting(settings);
     } on DioException catch (e) {
       avoidPrint(e);
@@ -238,10 +248,12 @@ abstract class SettingStoreBase with Store {
   @action
   void setSetting(json) {
     // Screens setting
-    if (json['data'] != null && json['data'].length > 0) _data = DataScreen.fromJson(json['data']);
-    
+    if (json['data'] != null && json['data'].length > 0)
+      _data = DataScreen.fromJson(json['data']);
+
     // Screens setting
-    if (json['features'] is Map<String, dynamic>) _features = Features.fromJson(json['features']);
+    if (json['features'] is Map<String, dynamic>)
+      _features = Features.fromJson(json['features']);
 
     // Languages setting
     _lang = json['language'];
@@ -251,7 +263,10 @@ abstract class SettingStoreBase with Store {
           .map((key) {
             final language = json['languages'][key];
             String code = language['code'] ?? language['language_code'];
-            return Language(code: code.toUpperCase(), locale: code, language: language['native_name']);
+            return Language(
+                code: code.toUpperCase(),
+                locale: code,
+                language: language['native_name']);
           })
           .toList()
           .cast<Language>();
@@ -261,9 +276,15 @@ abstract class SettingStoreBase with Store {
     // Currency setting
     _defaultCurrency = json['currency'];
     _currency ??= json['currency'];
-    if (json['currencies'] != null) _currencies = ObservableMap<String, dynamic>.of(json['currencies']);
+    if (json['currencies'] != null)
+      _currencies = ObservableMap<String, dynamic>.of(json['currencies']);
 
     // Checkout url
-    if (json['checkout_url'] != null && json['checkout_url'] is String) _checkoutUrl = json['checkout_url'];
+    if (json['checkout_url'] != null && json['checkout_url'] is String)
+      _checkoutUrl = json['checkout_url'];
+
+    // Domain
+    if (json['domain'] != null && json['domain'] is String)
+      _domain = json['domain']; // Tambahkan domain
   }
 }

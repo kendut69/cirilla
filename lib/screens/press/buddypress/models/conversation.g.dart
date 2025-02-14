@@ -8,11 +8,11 @@ part of 'conversation.dart';
 
 BPConversation _$BPConversationFromJson(Map<String, dynamic> json) =>
     BPConversation(
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
       title: BPConversation._fromRendered(json['subject']),
       message: BPConversation._fromRendered(json['excerpt']),
       date: convertToDate(json['date_gmt']),
-      unreadCount: json['unread_count'] as int?,
+      unreadCount: (json['unread_count'] as num?)?.toInt(),
       senderIds: BPConversation._fromSenderIds(json['sender_ids']),
       starredMessageIds:
           BPConversation._fromStarredMessageIds(json['starred_message_ids']),

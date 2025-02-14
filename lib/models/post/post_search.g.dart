@@ -7,14 +7,15 @@ part of 'post_search.dart';
 // **************************************************************************
 
 PostSearch _$PostSearchFromJson(Map<String, dynamic> json) => PostSearch(
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
       title: json['title'] as String?,
       url: json['url'] as String?,
       type: json['type'] as String?,
       subtype: json['subtype'] as String?,
     );
 
-Map<String, dynamic> _$PostSearchToJson(PostSearch instance) => <String, dynamic>{
+Map<String, dynamic> _$PostSearchToJson(PostSearch instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
       'url': instance.url,

@@ -9,10 +9,13 @@ part of 'country.dart';
 CountryData _$CountryDataFromJson(Map<String, dynamic> json) => CountryData(
       name: json['name'] as String?,
       code: json['code'] as String?,
-      states: (json['states'] as List<dynamic>?)?.map((e) => e as Map<String, dynamic>).toList(),
+      states: (json['states'] as List<dynamic>?)
+          ?.map((e) => e as Map<String, dynamic>)
+          .toList(),
     );
 
-Map<String, dynamic> _$CountryDataToJson(CountryData instance) => <String, dynamic>{
+Map<String, dynamic> _$CountryDataToJson(CountryData instance) =>
+    <String, dynamic>{
       'name': instance.name,
       'code': instance.code,
       'states': instance.states,

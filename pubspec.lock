@@ -2035,6 +2035,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
+  sumo_payment_plans:
+    dependency: "direct main"
+    description:
+      path: "packages/sumo_payment_plans"
+      relative: true
+    source: path
+    version: "0.0.1"
   sync_http:
     dependency: transitive
     description:

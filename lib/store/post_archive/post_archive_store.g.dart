@@ -6,22 +6,25 @@ part of 'post_archive_store.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$PostArchiveStore on PostArchiveStoreBase, Store {
   Computed<bool>? _$loadingComputed;
 
   @override
-  bool get loading =>
-      (_$loadingComputed ??= Computed<bool>(() => super.loading, name: '_PostArchiveStore.loading')).value;
+  bool get loading => (_$loadingComputed ??= Computed<bool>(() => super.loading,
+          name: 'PostArchiveStoreBase.loading'))
+      .value;
   Computed<ObservableList<PostArchive>>? _$postArchivesComputed;
 
   @override
   ObservableList<PostArchive> get postArchives => (_$postArchivesComputed ??=
-          Computed<ObservableList<PostArchive>>(() => super.postArchives, name: '_PostArchiveStore.postArchives'))
+          Computed<ObservableList<PostArchive>>(() => super.postArchives,
+              name: 'PostArchiveStoreBase.postArchives'))
       .value;
 
-  final _$fetchPostArchivesFutureAtom = Atom(name: '_PostArchiveStore.fetchPostArchivesFuture');
+  late final _$fetchPostArchivesFutureAtom = Atom(
+      name: 'PostArchiveStoreBase.fetchPostArchivesFuture', context: context);
 
   @override
   ObservableFuture<List<PostArchive>?> get fetchPostArchivesFuture {
@@ -31,12 +34,14 @@ mixin _$PostArchiveStore on PostArchiveStoreBase, Store {
 
   @override
   set fetchPostArchivesFuture(ObservableFuture<List<PostArchive>?> value) {
-    _$fetchPostArchivesFutureAtom.reportWrite(value, super.fetchPostArchivesFuture, () {
+    _$fetchPostArchivesFutureAtom
+        .reportWrite(value, super.fetchPostArchivesFuture, () {
       super.fetchPostArchivesFuture = value;
     });
   }
 
-  final _$_postArchivesAtom = Atom(name: '_PostArchiveStore._postArchives');
+  late final _$_postArchivesAtom =
+      Atom(name: 'PostArchiveStoreBase._postArchives', context: context);
 
   @override
   ObservableList<PostArchive> get _postArchives {
@@ -51,7 +56,8 @@ mixin _$PostArchiveStore on PostArchiveStoreBase, Store {
     });
   }
 
-  final _$successAtom = Atom(name: '_PostArchiveStore.success');
+  late final _$successAtom =
+      Atom(name: 'PostArchiveStoreBase.success', context: context);
 
   @override
   bool get success {
@@ -66,22 +72,25 @@ mixin _$PostArchiveStore on PostArchiveStoreBase, Store {
     });
   }
 
-  final _$getPostArchivesAsyncAction = AsyncAction('_PostArchiveStore.getPostArchives');
+  late final _$getPostArchivesAsyncAction =
+      AsyncAction('PostArchiveStoreBase.getPostArchives', context: context);
 
   @override
   Future<void> getPostArchives() {
     return _$getPostArchivesAsyncAction.run(() => super.getPostArchives());
   }
 
-  final _$_PostArchiveStoreActionController = ActionController(name: '_PostArchiveStore');
+  late final _$PostArchiveStoreBaseActionController =
+      ActionController(name: 'PostArchiveStoreBase', context: context);
 
   @override
   Future<void> refresh() {
-    final $actionInfo = _$_PostArchiveStoreActionController.startAction(name: '_PostArchiveStore.refresh');
+    final _$actionInfo = _$PostArchiveStoreBaseActionController.startAction(
+        name: 'PostArchiveStoreBase.refresh');
     try {
       return super.refresh();
     } finally {
-      _$_PostArchiveStoreActionController.endAction($actionInfo);
+      _$PostArchiveStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 

@@ -7,33 +7,44 @@ part of 'post.dart';
 // **************************************************************************
 
 Post _$PostFromJson(Map<String, dynamic> json) => Post(
-      id: json['id'] as int?,
-      author: json['author'] as int?,
+      id: (json['id'] as num?)?.toInt(),
+      author: (json['author'] as num?)?.toInt(),
       slug: json['slug'] as String?,
-      title: json['title'] == null ? null : PostTitle.fromJson(json['title'] as Map<String, dynamic>),
-      excerpt: json['excerpt'] == null ? null : PostTitle.fromJson(json['excerpt'] as Map<String, dynamic>),
-      content: json['content'] == null ? null : PostTitle.fromJson(json['content'] as Map<String, dynamic>),
+      title: json['title'] == null
+          ? null
+          : PostTitle.fromJson(json['title'] as Map<String, dynamic>),
+      excerpt: json['excerpt'] == null
+          ? null
+          : PostTitle.fromJson(json['excerpt'] as Map<String, dynamic>),
+      content: json['content'] == null
+          ? null
+          : PostTitle.fromJson(json['content'] as Map<String, dynamic>),
       date: json['date'] as String?,
       link: json['link'] as String?,
       format: json['format'] as String?,
       image: Post._imageFromJson(json['image']),
       thumb: Post._imageFromJson(json['thumb']),
-      tags: (json['tags'] as List<dynamic>?)?.map((e) => e as int).toList(),
+      tags: (json['tags'] as List<dynamic>?)
+          ?.map((e) => (e as num).toInt())
+          .toList(),
       postCategories: Post._toList(json['post_categories'] as List?),
-      postTags: (json['post_tags'] as List<dynamic>?)?.map((e) => PostTag.fromJson(e as Map<String, dynamic>)).toList(),
-      postCommentCount: json['post_comment_count'] as int?,
+      postTags: (json['post_tags'] as List<dynamic>?)
+          ?.map((e) => PostTag.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      postCommentCount: (json['post_comment_count'] as num?)?.toInt(),
       postAuthor: json['post_author'] as String?,
       postAuthorImage: json['post_author_avatar_urls'] == null
           ? null
-          : AvatarAuthor.fromJson(json['post_author_avatar_urls'] as Map<String, dynamic>),
+          : AvatarAuthor.fromJson(
+              json['post_author_avatar_urls'] as Map<String, dynamic>),
       blocks: json['blocks'] as List<dynamic>?,
+      afcFields: Post._fromAcfFields(json['afc_fields']),
     )
       ..postTitle = unescape(json['post_title'])
       ..type = json['type'] as String?
       ..thumbMedium = Post._imageFromJson(json['thumb_medium'])
       ..relatedIds = Post._relatedFromJson(json['acf'])
-      ..images = Post._imagesFromJson(json['images'])
-      ..afcFields = Post._fromAcfFields(json['afc_fields']);
+      ..images = Post._imagesFromJson(json['images']);
 
 Map<String, dynamic> _$PostToJson(Post instance) => <String, dynamic>{
       'id': instance.id,
@@ -68,7 +79,8 @@ AvatarAuthor _$AvatarAuthorFromJson(Map<String, dynamic> json) => AvatarAuthor(
       large: json['96'] as String?,
     );
 
-Map<String, dynamic> _$AvatarAuthorToJson(AvatarAuthor instance) => <String, dynamic>{
+Map<String, dynamic> _$AvatarAuthorToJson(AvatarAuthor instance) =>
+    <String, dynamic>{
       '24': instance.small,
       '48': instance.medium,
       '96': instance.large,

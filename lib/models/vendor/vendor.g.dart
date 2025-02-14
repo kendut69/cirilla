@@ -7,7 +7,7 @@ part of 'vendor.dart';
 // **************************************************************************
 
 Vendor _$VendorFromJson(Map<String, dynamic> json) => Vendor(
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
       storeName: json['store_name'] as String?,
       description: json['shop_description'] as String?,
       phone: json['phone'] as String?,
@@ -17,7 +17,9 @@ Vendor _$VendorFromJson(Map<String, dynamic> json) => Vendor(
       social: json['social'],
       banner: Vendor._imageFromJson(json['banner']),
       gravatar: Vendor._imageFromJson(json['gravatar']),
-      rating: json['rating'] == null ? null : RatingVendor.fromJson(json['rating'] as Map<String, dynamic>),
+      rating: json['rating'] == null
+          ? null
+          : RatingVendor.fromJson(json['rating'] as Map<String, dynamic>),
       featured: json['featured'] as bool?,
       address: Vendor._addressFromJson(json['address']),
       location: Vendor._locationFromJson(json['geolocation']),
@@ -42,17 +44,18 @@ Map<String, dynamic> _$VendorToJson(Vendor instance) => <String, dynamic>{
       'address': Vendor._addressToJson(instance.address),
       'customer_support': Vendor._addressToJson(instance.customer),
       'geolocation': Vendor._locationToJson(instance.location),
-      'duration': instance.duration,
       'distance': instance.distance,
+      'duration': instance.duration,
     };
 
 RatingVendor _$RatingVendorFromJson(Map<String, dynamic> json) => RatingVendor(
       rating: (json['rating'] as num?)?.toDouble(),
-      count: json['count'] as int?,
+      count: (json['count'] as num?)?.toInt(),
       avg: (json['avg'] as num?)?.toDouble(),
     );
 
-Map<String, dynamic> _$RatingVendorToJson(RatingVendor instance) => <String, dynamic>{
+Map<String, dynamic> _$RatingVendorToJson(RatingVendor instance) =>
+    <String, dynamic>{
       'rating': instance.rating,
       'count': instance.count,
       'avg': instance.avg,

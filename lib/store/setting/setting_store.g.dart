@@ -148,6 +148,12 @@ mixin _$SettingStore on SettingStoreBase, Store {
       (_$featuresComputed ??= Computed<Features>(() => super.features,
               name: 'SettingStoreBase.features'))
           .value;
+  Computed<String>? _$domainComputed;
+
+  @override
+  String get domain => (_$domainComputed ??=
+          Computed<String>(() => super.domain, name: 'SettingStoreBase.domain'))
+      .value;
 
   late final _$_supportedLanguagesAtom =
       Atom(name: 'SettingStoreBase._supportedLanguages', context: context);
@@ -407,6 +413,22 @@ mixin _$SettingStore on SettingStoreBase, Store {
     });
   }
 
+  late final _$_domainAtom =
+      Atom(name: 'SettingStoreBase._domain', context: context);
+
+  @override
+  String get _domain {
+    _$_domainAtom.reportRead();
+    return super._domain;
+  }
+
+  @override
+  set _domain(String value) {
+    _$_domainAtom.reportWrite(value, super._domain, () {
+      super._domain = value;
+    });
+  }
+
   late final _$changeLanguageAsyncAction =
       AsyncAction('SettingStoreBase.changeLanguage', context: context);
 
@@ -541,7 +563,8 @@ enableGetStart: ${enableGetStart},
 enableSelectLanguage: ${enableSelectLanguage},
 enableAllowLocation: ${enableAllowLocation},
 enableUsingBiometric: ${enableUsingBiometric},
-features: ${features}
+features: ${features},
+domain: ${domain}
     ''';
   }
 }

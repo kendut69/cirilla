@@ -11,7 +11,8 @@ FileDownload _$FileDownloadFromJson(Map<String, dynamic> json) => FileDownload(
       file: json['file'] as String?,
     );
 
-Map<String, dynamic> _$FileDownloadToJson(FileDownload instance) => <String, dynamic>{
+Map<String, dynamic> _$FileDownloadToJson(FileDownload instance) =>
+    <String, dynamic>{
       'name': instance.name,
       'file': instance.file,
     };

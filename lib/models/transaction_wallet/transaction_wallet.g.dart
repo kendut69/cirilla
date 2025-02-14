@@ -6,7 +6,8 @@ part of 'transaction_wallet.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-TransactionWallet _$TransactionWalletFromJson(Map<String, dynamic> json) => TransactionWallet(
+TransactionWallet _$TransactionWalletFromJson(Map<String, dynamic> json) =>
+    TransactionWallet(
       id: json['transaction_id'] as String?,
       title: json['details'] as String?,
       type: json['type'] as String?,
@@ -15,7 +16,8 @@ TransactionWallet _$TransactionWalletFromJson(Map<String, dynamic> json) => Tran
       currency: json['currency'] as String?,
     );
 
-Map<String, dynamic> _$TransactionWalletToJson(TransactionWallet instance) => <String, dynamic>{
+Map<String, dynamic> _$TransactionWalletToJson(TransactionWallet instance) =>
+    <String, dynamic>{
       'transaction_id': instance.id,
       'details': instance.title,
       'type': instance.type,

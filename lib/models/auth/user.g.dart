@@ -15,11 +15,14 @@ User _$UserFromJson(Map<String, dynamic> json) => User(
       firstName: json['first_name'] as String?,
       lastName: json['last_name'] as String?,
       url: json['user_url'] as String?,
-      avatar: json['avatar'] as String? ?? 'https://cdn.rnlab.io/placeholder-416x416.png',
+      avatar: json['avatar'] as String? ??
+          'https://cdn.rnlab.io/placeholder-416x416.png',
       socialAvatar: User._toSocialString(json['social_avatar']),
       loginType: json['loginType'] as String? ?? 'email',
       roles: (json['roles'] as List<dynamic>).map((e) => e as String).toList(),
-      options: json['options'] == null ? null : UserOptions.fromJson(json['options'] as Map<String, dynamic>),
+      options: json['options'] == null
+          ? null
+          : UserOptions.fromJson(json['options'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
@@ -32,7 +35,7 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'last_name': instance.lastName,
       'user_url': instance.url,
       'avatar': instance.avatar,
-      'socialAvatar': instance.socialAvatar,
+      'social_avatar': instance.socialAvatar,
       'loginType': instance.loginType,
       'roles': instance.roles,
       'options': User.optionsToJson(instance.options),
@@ -43,7 +46,8 @@ UserOptions _$UserOptionsFromJson(Map<String, dynamic> json) => UserOptions(
       b2bkingCustomerGroupId: json['b2bkingCustomerGroupId'] as String? ?? '',
     );
 
-Map<String, dynamic> _$UserOptionsToJson(UserOptions instance) => <String, dynamic>{
+Map<String, dynamic> _$UserOptionsToJson(UserOptions instance) =>
+    <String, dynamic>{
       'hideAds': instance.hideAds,
       'b2bkingCustomerGroupId': instance.b2bkingCustomerGroupId,
     };

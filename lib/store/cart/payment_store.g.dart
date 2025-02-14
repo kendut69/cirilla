@@ -6,15 +6,18 @@ part of 'payment_store.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$PaymentStore on PaymentStoreBase, Store {
   Computed<String>? _$methodComputed;
 
   @override
-  String get method => (_$methodComputed ??= Computed<String>(() => super.method, name: '_PaymentStore.method')).value;
+  String get method => (_$methodComputed ??=
+          Computed<String>(() => super.method, name: 'PaymentStoreBase.method'))
+      .value;
 
-  final _$loadingAtom = Atom(name: '_PaymentStore.loading');
+  late final _$loadingAtom =
+      Atom(name: 'PaymentStoreBase.loading', context: context);
 
   @override
   bool get loading {
@@ -29,7 +32,8 @@ mixin _$PaymentStore on PaymentStoreBase, Store {
     });
   }
 
-  final _$activeAtom = Atom(name: '_PaymentStore.active');
+  late final _$activeAtom =
+      Atom(name: 'PaymentStoreBase.active', context: context);
 
   @override
   int get active {
@@ -44,7 +48,8 @@ mixin _$PaymentStore on PaymentStoreBase, Store {
     });
   }
 
-  final _$gatewaysAtom = Atom(name: '_PaymentStore.gateways');
+  late final _$gatewaysAtom =
+      Atom(name: 'PaymentStoreBase.gateways', context: context);
 
   @override
   ObservableList<Gateway> get gateways {
@@ -59,22 +64,25 @@ mixin _$PaymentStore on PaymentStoreBase, Store {
     });
   }
 
-  final _$getGatewaysAsyncAction = AsyncAction('_PaymentStore.getGateways');
+  late final _$getGatewaysAsyncAction =
+      AsyncAction('PaymentStoreBase.getGateways', context: context);
 
   @override
   Future<void> getGateways() {
     return _$getGatewaysAsyncAction.run(() => super.getGateways());
   }
 
-  final _$_PaymentStoreActionController = ActionController(name: '_PaymentStore');
+  late final _$PaymentStoreBaseActionController =
+      ActionController(name: 'PaymentStoreBase', context: context);
 
   @override
   void select(int index) {
-    final $actionInfo = _$_PaymentStoreActionController.startAction(name: '_PaymentStore.select');
+    final _$actionInfo = _$PaymentStoreBaseActionController.startAction(
+        name: 'PaymentStoreBase.select');
     try {
       return super.select(index);
     } finally {
-      _$_PaymentStoreActionController.endAction($actionInfo);
+      _$PaymentStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 

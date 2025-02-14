@@ -6,38 +6,45 @@ part of 'product_category_store.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$ProductCategoryStore on ProductCategoryStoreBase, Store {
   Computed<ObservableList<ProductCategory>>? _$categoriesComputed;
 
   @override
   ObservableList<ProductCategory> get categories => (_$categoriesComputed ??=
-          Computed<ObservableList<ProductCategory>>(() => super.categories, name: '_ProductCategoryStore.categories'))
+          Computed<ObservableList<ProductCategory>>(() => super.categories,
+              name: 'ProductCategoryStoreBase.categories'))
       .value;
   Computed<bool>? _$canLoadMoreComputed;
 
   @override
   bool get canLoadMore =>
-      (_$canLoadMoreComputed ??= Computed<bool>(() => super.canLoadMore, name: '_ProductCategoryStore.canLoadMore'))
+      (_$canLoadMoreComputed ??= Computed<bool>(() => super.canLoadMore,
+              name: 'ProductCategoryStoreBase.canLoadMore'))
           .value;
   Computed<Map<dynamic, dynamic>>? _$sortComputed;
 
   @override
   Map<dynamic, dynamic> get sort =>
-      (_$sortComputed ??= Computed<Map<dynamic, dynamic>>(() => super.sort, name: '_ProductCategoryStore.sort')).value;
+      (_$sortComputed ??= Computed<Map<dynamic, dynamic>>(() => super.sort,
+              name: 'ProductCategoryStoreBase.sort'))
+          .value;
   Computed<int>? _$parentComputed;
 
   @override
-  int get parent =>
-      (_$parentComputed ??= Computed<int>(() => super.parent, name: '_ProductCategoryStore.parent')).value;
+  int get parent => (_$parentComputed ??= Computed<int>(() => super.parent,
+          name: 'ProductCategoryStoreBase.parent'))
+      .value;
   Computed<int>? _$perPageComputed;
 
   @override
-  int get perPage =>
-      (_$perPageComputed ??= Computed<int>(() => super.perPage, name: '_ProductCategoryStore.perPage')).value;
+  int get perPage => (_$perPageComputed ??= Computed<int>(() => super.perPage,
+          name: 'ProductCategoryStoreBase.perPage'))
+      .value;
 
-  final _$_categoriesAtom = Atom(name: '_ProductCategoryStore._categories');
+  late final _$_categoriesAtom =
+      Atom(name: 'ProductCategoryStoreBase._categories', context: context);
 
   @override
   ObservableList<ProductCategory> get _categories {
@@ -52,7 +59,8 @@ mixin _$ProductCategoryStore on ProductCategoryStoreBase, Store {
     });
   }
 
-  final _$loadingAtom = Atom(name: '_ProductCategoryStore.loading');
+  late final _$loadingAtom =
+      Atom(name: 'ProductCategoryStoreBase.loading', context: context);
 
   @override
   bool get loading {
@@ -67,7 +75,8 @@ mixin _$ProductCategoryStore on ProductCategoryStoreBase, Store {
     });
   }
 
-  final _$_canLoadMoreAtom = Atom(name: '_ProductCategoryStore._canLoadMore');
+  late final _$_canLoadMoreAtom =
+      Atom(name: 'ProductCategoryStoreBase._canLoadMore', context: context);
 
   @override
   bool get _canLoadMore {
@@ -82,7 +91,8 @@ mixin _$ProductCategoryStore on ProductCategoryStoreBase, Store {
     });
   }
 
-  final _$_languageAtom = Atom(name: '_ProductCategoryStore._language');
+  late final _$_languageAtom =
+      Atom(name: 'ProductCategoryStoreBase._language', context: context);
 
   @override
   String get _language {
@@ -97,7 +107,8 @@ mixin _$ProductCategoryStore on ProductCategoryStoreBase, Store {
     });
   }
 
-  final _$_nextPageAtom = Atom(name: '_ProductCategoryStore._nextPage');
+  late final _$_nextPageAtom =
+      Atom(name: 'ProductCategoryStoreBase._nextPage', context: context);
 
   @override
   int get _nextPage {
@@ -112,7 +123,8 @@ mixin _$ProductCategoryStore on ProductCategoryStoreBase, Store {
     });
   }
 
-  final _$_perPageAtom = Atom(name: '_ProductCategoryStore._perPage');
+  late final _$_perPageAtom =
+      Atom(name: 'ProductCategoryStoreBase._perPage', context: context);
 
   @override
   int get _perPage {
@@ -127,7 +139,8 @@ mixin _$ProductCategoryStore on ProductCategoryStoreBase, Store {
     });
   }
 
-  final _$_parentAtom = Atom(name: '_ProductCategoryStore._parent');
+  late final _$_parentAtom =
+      Atom(name: 'ProductCategoryStoreBase._parent', context: context);
 
   @override
   int get _parent {
@@ -142,7 +155,8 @@ mixin _$ProductCategoryStore on ProductCategoryStoreBase, Store {
     });
   }
 
-  final _$_hideEmptyAtom = Atom(name: '_ProductCategoryStore._hideEmpty');
+  late final _$_hideEmptyAtom =
+      Atom(name: 'ProductCategoryStoreBase._hideEmpty', context: context);
 
   @override
   bool get _hideEmpty {
@@ -157,7 +171,8 @@ mixin _$ProductCategoryStore on ProductCategoryStoreBase, Store {
     });
   }
 
-  final _$_searchAtom = Atom(name: '_ProductCategoryStore._search');
+  late final _$_searchAtom =
+      Atom(name: 'ProductCategoryStoreBase._search', context: context);
 
   @override
   String get _search {
@@ -172,7 +187,8 @@ mixin _$ProductCategoryStore on ProductCategoryStoreBase, Store {
     });
   }
 
-  final _$_sortAtom = Atom(name: '_ProductCategoryStore._sort');
+  late final _$_sortAtom =
+      Atom(name: 'ProductCategoryStoreBase._sort', context: context);
 
   @override
   Map<dynamic, dynamic> get _sort {
@@ -187,32 +203,46 @@ mixin _$ProductCategoryStore on ProductCategoryStoreBase, Store {
     });
   }
 
-  final _$getCategoriesAsyncAction = AsyncAction('_ProductCategoryStore.getCategories');
+  late final _$getCategoriesAsyncAction =
+      AsyncAction('ProductCategoryStoreBase.getCategories', context: context);
 
   @override
   Future<void> getCategories() {
     return _$getCategoriesAsyncAction.run(() => super.getCategories());
   }
 
-  final _$_ProductCategoryStoreActionController = ActionController(name: '_ProductCategoryStore');
+  late final _$ProductCategoryStoreBaseActionController =
+      ActionController(name: 'ProductCategoryStoreBase', context: context);
 
   @override
   Future<void> refresh() {
-    final $actionInfo = _$_ProductCategoryStoreActionController.startAction(name: '_ProductCategoryStore.refresh');
+    final _$actionInfo = _$ProductCategoryStoreBaseActionController.startAction(
+        name: 'ProductCategoryStoreBase.refresh');
     try {
       return super.refresh();
     } finally {
-      _$_ProductCategoryStoreActionController.endAction($actionInfo);
+      _$ProductCategoryStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void onChanged({Map<dynamic, dynamic>? sort, String? search, int? parent, int? perPage, String? language}) {
-    final $actionInfo = _$_ProductCategoryStoreActionController.startAction(name: '_ProductCategoryStore.onChanged');
+  void onChanged(
+      {Map<dynamic, dynamic>? sort,
+      String? search,
+      int? parent,
+      int? perPage,
+      String? language}) {
+    final _$actionInfo = _$ProductCategoryStoreBaseActionController.startAction(
+        name: 'ProductCategoryStoreBase.onChanged');
     try {
-      return super.onChanged(sort: sort, search: search, parent: parent, perPage: perPage, language: language);
+      return super.onChanged(
+          sort: sort,
+          search: search,
+          parent: parent,
+          perPage: perPage,
+          language: language);
     } finally {
-      _$_ProductCategoryStoreActionController.endAction($actionInfo);
+      _$ProductCategoryStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 

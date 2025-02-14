@@ -6,10 +6,11 @@ part of 'checkout_store.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$CheckoutStore on CheckoutStoreBase, Store {
-  final _$loadingAtom = Atom(name: 'CheckoutStoreBase.loading');
+  late final _$loadingAtom =
+      Atom(name: 'CheckoutStoreBase.loading', context: context);
 
   @override
   bool get loading {
@@ -24,7 +25,8 @@ mixin _$CheckoutStore on CheckoutStoreBase, Store {
     });
   }
 
-  final _$loadingPaymentAtom = Atom(name: 'CheckoutStoreBase.loadingPayment');
+  late final _$loadingPaymentAtom =
+      Atom(name: 'CheckoutStoreBase.loadingPayment', context: context);
 
   @override
   bool get loadingPayment {
@@ -39,7 +41,8 @@ mixin _$CheckoutStore on CheckoutStoreBase, Store {
     });
   }
 
-  final _$shipToDifferentAddressAtom = Atom(name: 'CheckoutStoreBase.shipToDifferentAddress');
+  late final _$shipToDifferentAddressAtom =
+      Atom(name: 'CheckoutStoreBase.shipToDifferentAddress', context: context);
 
   @override
   bool get shipToDifferentAddress {
@@ -49,27 +52,14 @@ mixin _$CheckoutStore on CheckoutStoreBase, Store {
 
   @override
   set shipToDifferentAddress(bool value) {
-    _$shipToDifferentAddressAtom.reportWrite(value, super.shipToDifferentAddress, () {
+    _$shipToDifferentAddressAtom
+        .reportWrite(value, super.shipToDifferentAddress, () {
       super.shipToDifferentAddress = value;
     });
   }
 
-  final _$deliveryLocationAtom = Atom(name: 'CheckoutStoreBase.deliveryLocation');
-
-  @override
-  UserLocation? get deliveryLocation {
-    _$deliveryLocationAtom.reportRead();
-    return super.deliveryLocation;
-  }
-
-  @override
-  set deliveryLocation(UserLocation? value) {
-    _$deliveryLocationAtom.reportWrite(value, super.deliveryLocation, () {
-      super.deliveryLocation = value;
-    });
-  }
-
-  final _$billingAddressAtom = Atom(name: 'CheckoutStoreBase.billingAddress');
+  late final _$billingAddressAtom =
+      Atom(name: 'CheckoutStoreBase.billingAddress', context: context);
 
   @override
   Map<String, dynamic> get billingAddress {
@@ -84,7 +74,8 @@ mixin _$CheckoutStore on CheckoutStoreBase, Store {
     });
   }
 
-  final _$shippingAddressAtom = Atom(name: 'CheckoutStoreBase.shippingAddress');
+  late final _$shippingAddressAtom =
+      Atom(name: 'CheckoutStoreBase.shippingAddress', context: context);
 
   @override
   Map<String, dynamic> get shippingAddress {
@@ -99,78 +90,113 @@ mixin _$CheckoutStore on CheckoutStoreBase, Store {
     });
   }
 
-  final _$checkoutAsyncAction = AsyncAction('CheckoutStoreBase.checkout');
+  late final _$deliveryLocationAtom =
+      Atom(name: 'CheckoutStoreBase.deliveryLocation', context: context);
 
   @override
-  Future<dynamic> checkout(
-      List<dynamic> paymentData,
-      {
-        Map<String, dynamic>? billingOptions,
-        Map<String, dynamic>? shippingOptions,
-        Map<String, dynamic>? options,
-        Map<String, dynamic>? additional,
-      }) {
-    return _$checkoutAsyncAction.run(() => super.checkout(paymentData, billingOptions: billingOptions, shippingOptions: shippingOptions, options: options, additional: additional));
+  UserLocation? get deliveryLocation {
+    _$deliveryLocationAtom.reportRead();
+    return super.deliveryLocation;
   }
-
-  final _$updateBillingFromMapAsyncAction = AsyncAction('CheckoutStoreBase.updateBillingFromMap');
 
   @override
-  Future<dynamic> updateBillingFromMap(
-      {required Place place, required CheckoutAddressStore checkoutAddressStore, String? locale, String? address2}) {
-    return _$updateBillingFromMapAsyncAction.run(() => super.updateBillingFromMap(
-          checkoutAddressStore: checkoutAddressStore,
-          place: place,
-          locale: locale,
-          address2: address2,
-        ));
+  set deliveryLocation(UserLocation? value) {
+    _$deliveryLocationAtom.reportWrite(value, super.deliveryLocation, () {
+      super.deliveryLocation = value;
+    });
   }
 
-  final _$updateShippingFromMapAsyncAction = AsyncAction('CheckoutStoreBase.updateShippingFromMap');
+  late final _$checkoutAsyncAction =
+      AsyncAction('CheckoutStoreBase.checkout', context: context);
 
   @override
-  Future<dynamic> updateShippingFromMap(
-      {required Place place, required CheckoutAddressStore checkoutAddressStore, String? locale, String? address2}) {
-    return _$updateShippingFromMapAsyncAction.run(() => super.updateShippingFromMap(
-          checkoutAddressStore: checkoutAddressStore,
-          place: place,
-          locale: locale,
-          address2: address2,
-        ));
+  Future<dynamic> checkout(List<dynamic> paymentData,
+      {Map<String, dynamic>? billingOptions,
+      Map<String, dynamic>? shippingOptions,
+      Map<String, dynamic>? options,
+      Map<String, dynamic>? additional}) {
+    return _$checkoutAsyncAction.run(() => super.checkout(paymentData,
+        billingOptions: billingOptions,
+        shippingOptions: shippingOptions,
+        options: options,
+        additional: additional));
   }
 
-  final _$progressServerAsyncAction = AsyncAction('CheckoutStoreBase.progressServer');
+  late final _$updateBillingFromMapAsyncAction =
+      AsyncAction('CheckoutStoreBase.updateBillingFromMap', context: context);
 
   @override
-  Future<dynamic> progressServer({String? cartKey, required Map<String, dynamic> data}) {
-    return _$progressServerAsyncAction.run(() => super.progressServer(cartKey: cartKey, data: data));
+  Future<void> updateBillingFromMap(
+      {required Place place,
+      required CheckoutAddressStore checkoutAddressStore,
+      String? locale,
+      String? address2}) {
+    return _$updateBillingFromMapAsyncAction.run(() => super
+        .updateBillingFromMap(
+            place: place,
+            checkoutAddressStore: checkoutAddressStore,
+            locale: locale,
+            address2: address2));
   }
 
-  final _$changeAddressAsyncAction = AsyncAction('CheckoutStoreBase.changeAddress');
+  late final _$updateShippingFromMapAsyncAction =
+      AsyncAction('CheckoutStoreBase.updateShippingFromMap', context: context);
 
   @override
-  Future<void> changeAddress({Map<String, dynamic>? billing, Map<String, dynamic>? shipping, Function? callback}) {
-    return _$changeAddressAsyncAction
-        .run(() => super.changeAddress(billing: billing, shipping: shipping, callback: callback));
+  Future<void> updateShippingFromMap(
+      {required Place place,
+      required CheckoutAddressStore checkoutAddressStore,
+      String? locale,
+      String? address2}) {
+    return _$updateShippingFromMapAsyncAction.run(() => super
+        .updateShippingFromMap(
+            place: place,
+            checkoutAddressStore: checkoutAddressStore,
+            locale: locale,
+            address2: address2));
   }
 
-  final _$updateAddressAsyncAction = AsyncAction('CheckoutStoreBase.updateAddress');
+  late final _$progressServerAsyncAction =
+      AsyncAction('CheckoutStoreBase.progressServer', context: context);
+
+  @override
+  Future<dynamic> progressServer(
+      {String? cartKey, required Map<String, dynamic> data}) {
+    return _$progressServerAsyncAction
+        .run(() => super.progressServer(cartKey: cartKey, data: data));
+  }
+
+  late final _$changeAddressAsyncAction =
+      AsyncAction('CheckoutStoreBase.changeAddress', context: context);
+
+  @override
+  Future<void> changeAddress(
+      {Map<String, dynamic>? billing,
+      Map<String, dynamic>? shipping,
+      Function? callback}) {
+    return _$changeAddressAsyncAction.run(() => super.changeAddress(
+        billing: billing, shipping: shipping, callback: callback));
+  }
+
+  late final _$updateAddressAsyncAction =
+      AsyncAction('CheckoutStoreBase.updateAddress', context: context);
 
   @override
   Future<void> updateAddress() {
     return _$updateAddressAsyncAction.run(() => super.updateAddress());
   }
 
-  final _$CheckoutStoreBaseActionController = ActionController(name: 'CheckoutStoreBase');
+  late final _$CheckoutStoreBaseActionController =
+      ActionController(name: 'CheckoutStoreBase', context: context);
 
   @override
   void onShipToDifferentAddress() {
-    final $actionInfo =
-        _$CheckoutStoreBaseActionController.startAction(name: 'CheckoutStoreBase.onShipToDifferentAddress');
+    final _$actionInfo = _$CheckoutStoreBaseActionController.startAction(
+        name: 'CheckoutStoreBase.onShipToDifferentAddress');
     try {
       return super.onShipToDifferentAddress();
     } finally {
-      _$CheckoutStoreBaseActionController.endAction($actionInfo);
+      _$CheckoutStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 
@@ -181,7 +207,8 @@ loading: ${loading},
 loadingPayment: ${loadingPayment},
 shipToDifferentAddress: ${shipToDifferentAddress},
 billingAddress: ${billingAddress},
-shippingAddress: ${shippingAddress}
+shippingAddress: ${shippingAddress},
+deliveryLocation: ${deliveryLocation}
     ''';
   }
 }

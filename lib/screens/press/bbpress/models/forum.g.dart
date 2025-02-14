@@ -7,9 +7,9 @@ part of 'forum.dart';
 // **************************************************************************
 
 BBPForum _$BBPForumFromJson(Map<String, dynamic> json) => BBPForum(
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
       title: unescape(json['title']),
-      parent: json['parent'] as int?,
+      parent: (json['parent'] as num?)?.toInt(),
       topicCount: ConvertData.stringToInt(json['topic_count']),
       replyCount: ConvertData.stringToInt(json['reply_count']),
       content: json['content'] as String?,

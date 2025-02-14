@@ -7,10 +7,10 @@ part of 'chat.dart';
 // **************************************************************************
 
 BMChat _$BMChatFromJson(Map<String, dynamic> json) => BMChat(
-      id: json['thread_id'] as int?,
+      id: (json['thread_id'] as num?)?.toInt(),
       title: json['title'] as String?,
       participants: BMChat._fromUser(json['participants']),
-      participantsCount: json['participantsCount'] as int?,
+      participantsCount: (json['participantsCount'] as num?)?.toInt(),
       messages: BMChat._fromMessage(json['messages']),
-      unread: json['unread'] as int?,
+      unread: (json['unread'] as num?)?.toInt(),
     );

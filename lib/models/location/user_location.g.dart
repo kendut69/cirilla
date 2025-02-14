@@ -14,7 +14,8 @@ UserLocation _$UserLocationFromJson(Map<String, dynamic> json) => UserLocation(
       tag: json['tag'] as String?,
     );
 
-Map<String, dynamic> _$UserLocationToJson(UserLocation instance) => <String, dynamic>{
+Map<String, dynamic> _$UserLocationToJson(UserLocation instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'lat': instance.lat,
       'lng': instance.lng,
@@ -33,7 +34,8 @@ PlaceDetail _$PlaceDetailFromJson(Map<String, dynamic> json) => PlaceDetail(
       lng: (json['lng'] as num?)?.toDouble(),
     );
 
-Map<String, dynamic> _$PlaceDetailToJson(PlaceDetail instance) => <String, dynamic>{
+Map<String, dynamic> _$PlaceDetailToJson(PlaceDetail instance) =>
+    <String, dynamic>{
       'streetNumber': instance.streetNumber,
       'street': instance.street,
       'administrativeArea': instance.administrativeArea,

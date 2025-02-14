@@ -6,34 +6,44 @@ part of 'post_tag_store.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$PostTagStore on PostTagStoreBase, Store {
   Computed<bool>? _$loadingComputed;
 
   @override
-  bool get loading => (_$loadingComputed ??= Computed<bool>(() => super.loading, name: '_PostTagStore.loading')).value;
+  bool get loading => (_$loadingComputed ??=
+          Computed<bool>(() => super.loading, name: 'PostTagStoreBase.loading'))
+      .value;
   Computed<ObservableList<PostTag>>? _$postTagsComputed;
 
   @override
-  ObservableList<PostTag> get postTags =>
-      (_$postTagsComputed ??= Computed<ObservableList<PostTag>>(() => super.postTags, name: '_PostTagStore.postTags'))
-          .value;
+  ObservableList<PostTag> get postTags => (_$postTagsComputed ??=
+          Computed<ObservableList<PostTag>>(() => super.postTags,
+              name: 'PostTagStoreBase.postTags'))
+      .value;
   Computed<bool>? _$canLoadMoreComputed;
 
   @override
   bool get canLoadMore =>
-      (_$canLoadMoreComputed ??= Computed<bool>(() => super.canLoadMore, name: '_PostTagStore.canLoadMore')).value;
+      (_$canLoadMoreComputed ??= Computed<bool>(() => super.canLoadMore,
+              name: 'PostTagStoreBase.canLoadMore'))
+          .value;
   Computed<int>? _$perPageComputed;
 
   @override
-  int get perPage => (_$perPageComputed ??= Computed<int>(() => super.perPage, name: '_PostTagStore.perPage')).value;
+  int get perPage => (_$perPageComputed ??=
+          Computed<int>(() => super.perPage, name: 'PostTagStoreBase.perPage'))
+      .value;
   Computed<String>? _$langComputed;
 
   @override
-  String get lang => (_$langComputed ??= Computed<String>(() => super.lang, name: '_PostTagStore.lang')).value;
+  String get lang => (_$langComputed ??=
+          Computed<String>(() => super.lang, name: 'PostTagStoreBase.lang'))
+      .value;
 
-  final _$fetchPostTagsFutureAtom = Atom(name: '_PostTagStore.fetchPostTagsFuture');
+  late final _$fetchPostTagsFutureAtom =
+      Atom(name: 'PostTagStoreBase.fetchPostTagsFuture', context: context);
 
   @override
   ObservableFuture<List<PostTag>?> get fetchPostTagsFuture {
@@ -48,7 +58,8 @@ mixin _$PostTagStore on PostTagStoreBase, Store {
     });
   }
 
-  final _$_postTagsAtom = Atom(name: '_PostTagStore._postTags');
+  late final _$_postTagsAtom =
+      Atom(name: 'PostTagStoreBase._postTags', context: context);
 
   @override
   ObservableList<PostTag> get _postTags {
@@ -63,7 +74,8 @@ mixin _$PostTagStore on PostTagStoreBase, Store {
     });
   }
 
-  final _$successAtom = Atom(name: '_PostTagStore.success');
+  late final _$successAtom =
+      Atom(name: 'PostTagStoreBase.success', context: context);
 
   @override
   bool get success {
@@ -78,7 +90,8 @@ mixin _$PostTagStore on PostTagStoreBase, Store {
     });
   }
 
-  final _$_nextPageAtom = Atom(name: '_PostTagStore._nextPage');
+  late final _$_nextPageAtom =
+      Atom(name: 'PostTagStoreBase._nextPage', context: context);
 
   @override
   int get _nextPage {
@@ -93,7 +106,8 @@ mixin _$PostTagStore on PostTagStoreBase, Store {
     });
   }
 
-  final _$_perPageAtom = Atom(name: '_PostTagStore._perPage');
+  late final _$_perPageAtom =
+      Atom(name: 'PostTagStoreBase._perPage', context: context);
 
   @override
   int get _perPage {
@@ -108,7 +122,8 @@ mixin _$PostTagStore on PostTagStoreBase, Store {
     });
   }
 
-  final _$_langAtom = Atom(name: '_PostTagStore._lang');
+  late final _$_langAtom =
+      Atom(name: 'PostTagStoreBase._lang', context: context);
 
   @override
   String get _lang {
@@ -123,7 +138,8 @@ mixin _$PostTagStore on PostTagStoreBase, Store {
     });
   }
 
-  final _$_canLoadMoreAtom = Atom(name: '_PostTagStore._canLoadMore');
+  late final _$_canLoadMoreAtom =
+      Atom(name: 'PostTagStoreBase._canLoadMore', context: context);
 
   @override
   bool get _canLoadMore {
@@ -138,22 +154,25 @@ mixin _$PostTagStore on PostTagStoreBase, Store {
     });
   }
 
-  final _$getPostTagsAsyncAction = AsyncAction('_PostTagStore.getPostTags');
+  late final _$getPostTagsAsyncAction =
+      AsyncAction('PostTagStoreBase.getPostTags', context: context);
 
   @override
   Future<void> getPostTags() {
     return _$getPostTagsAsyncAction.run(() => super.getPostTags());
   }
 
-  final _$_PostTagStoreActionController = ActionController(name: '_PostTagStore');
+  late final _$PostTagStoreBaseActionController =
+      ActionController(name: 'PostTagStoreBase', context: context);
 
   @override
   Future<void> refresh() {
-    final $actionInfo = _$_PostTagStoreActionController.startAction(name: '_PostTagStore.refresh');
+    final _$actionInfo = _$PostTagStoreBaseActionController.startAction(
+        name: 'PostTagStoreBase.refresh');
     try {
       return super.refresh();
     } finally {
-      _$_PostTagStoreActionController.endAction($actionInfo);
+      _$PostTagStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 

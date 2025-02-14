@@ -6,34 +6,40 @@ part of 'transaction_store.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$TransactionStore on TransactionStoreStoreBase, Store {
   Computed<bool>? _$loadingComputed;
 
   @override
-  bool get loading =>
-      (_$loadingComputed ??= Computed<bool>(() => super.loading, name: '_TransactionStoreStore.loading')).value;
+  bool get loading => (_$loadingComputed ??= Computed<bool>(() => super.loading,
+          name: 'TransactionStoreStoreBase.loading'))
+      .value;
   Computed<ObservableList<TransactionWallet>>? _$transactionWalletsComputed;
 
   @override
   ObservableList<TransactionWallet> get transactionWallets =>
-      (_$transactionWalletsComputed ??= Computed<ObservableList<TransactionWallet>>(() => super.transactionWallets,
-              name: '_TransactionStoreStore.transactionWallets'))
+      (_$transactionWalletsComputed ??=
+              Computed<ObservableList<TransactionWallet>>(
+                  () => super.transactionWallets,
+                  name: 'TransactionStoreStoreBase.transactionWallets'))
           .value;
   Computed<bool>? _$canLoadMoreComputed;
 
   @override
   bool get canLoadMore =>
-      (_$canLoadMoreComputed ??= Computed<bool>(() => super.canLoadMore, name: '_TransactionStoreStore.canLoadMore'))
+      (_$canLoadMoreComputed ??= Computed<bool>(() => super.canLoadMore,
+              name: 'TransactionStoreStoreBase.canLoadMore'))
           .value;
   Computed<int>? _$perPageComputed;
 
   @override
-  int get perPage =>
-      (_$perPageComputed ??= Computed<int>(() => super.perPage, name: '_TransactionStoreStore.perPage')).value;
+  int get perPage => (_$perPageComputed ??= Computed<int>(() => super.perPage,
+          name: 'TransactionStoreStoreBase.perPage'))
+      .value;
 
-  final _$_userIdAtom = Atom(name: '_TransactionStoreStore._userId');
+  late final _$_userIdAtom =
+      Atom(name: 'TransactionStoreStoreBase._userId', context: context);
 
   @override
   String? get _userId {
@@ -48,7 +54,9 @@ mixin _$TransactionStore on TransactionStoreStoreBase, Store {
     });
   }
 
-  final _$fetchTransactionWalletsFutureAtom = Atom(name: '_TransactionStoreStore.fetchTransactionWalletsFuture');
+  late final _$fetchTransactionWalletsFutureAtom = Atom(
+      name: 'TransactionStoreStoreBase.fetchTransactionWalletsFuture',
+      context: context);
 
   @override
   ObservableFuture<List<TransactionWallet>?> get fetchTransactionWalletsFuture {
@@ -57,13 +65,16 @@ mixin _$TransactionStore on TransactionStoreStoreBase, Store {
   }
 
   @override
-  set fetchTransactionWalletsFuture(ObservableFuture<List<TransactionWallet>?> value) {
-    _$fetchTransactionWalletsFutureAtom.reportWrite(value, super.fetchTransactionWalletsFuture, () {
+  set fetchTransactionWalletsFuture(
+      ObservableFuture<List<TransactionWallet>?> value) {
+    _$fetchTransactionWalletsFutureAtom
+        .reportWrite(value, super.fetchTransactionWalletsFuture, () {
       super.fetchTransactionWalletsFuture = value;
     });
   }
 
-  final _$_transactionWalletsAtom = Atom(name: '_TransactionStoreStore._transactionWallets');
+  late final _$_transactionWalletsAtom = Atom(
+      name: 'TransactionStoreStoreBase._transactionWallets', context: context);
 
   @override
   ObservableList<TransactionWallet> get _transactionWallets {
@@ -78,7 +89,8 @@ mixin _$TransactionStore on TransactionStoreStoreBase, Store {
     });
   }
 
-  final _$successAtom = Atom(name: '_TransactionStoreStore.success');
+  late final _$successAtom =
+      Atom(name: 'TransactionStoreStoreBase.success', context: context);
 
   @override
   bool get success {
@@ -93,7 +105,8 @@ mixin _$TransactionStore on TransactionStoreStoreBase, Store {
     });
   }
 
-  final _$_nextPageAtom = Atom(name: '_TransactionStoreStore._nextPage');
+  late final _$_nextPageAtom =
+      Atom(name: 'TransactionStoreStoreBase._nextPage', context: context);
 
   @override
   int get _nextPage {
@@ -108,7 +121,8 @@ mixin _$TransactionStore on TransactionStoreStoreBase, Store {
     });
   }
 
-  final _$_perPageAtom = Atom(name: '_TransactionStoreStore._perPage');
+  late final _$_perPageAtom =
+      Atom(name: 'TransactionStoreStoreBase._perPage', context: context);
 
   @override
   int get _perPage {
@@ -123,7 +137,8 @@ mixin _$TransactionStore on TransactionStoreStoreBase, Store {
     });
   }
 
-  final _$_canLoadMoreAtom = Atom(name: '_TransactionStoreStore._canLoadMore');
+  late final _$_canLoadMoreAtom =
+      Atom(name: 'TransactionStoreStoreBase._canLoadMore', context: context);
 
   @override
   bool get _canLoadMore {
@@ -138,22 +153,27 @@ mixin _$TransactionStore on TransactionStoreStoreBase, Store {
     });
   }
 
-  final _$getTransactionWalletsAsyncAction = AsyncAction('_TransactionStoreStore.getTransactionWallets');
+  late final _$getTransactionWalletsAsyncAction = AsyncAction(
+      'TransactionStoreStoreBase.getTransactionWallets',
+      context: context);
 
   @override
   Future<void> getTransactionWallets() {
-    return _$getTransactionWalletsAsyncAction.run(() => super.getTransactionWallets());
+    return _$getTransactionWalletsAsyncAction
+        .run(() => super.getTransactionWallets());
   }
 
-  final _$_TransactionStoreStoreActionController = ActionController(name: '_TransactionStoreStore');
+  late final _$TransactionStoreStoreBaseActionController =
+      ActionController(name: 'TransactionStoreStoreBase', context: context);
 
   @override
   Future<void> refresh() {
-    final $actionInfo = _$_TransactionStoreStoreActionController.startAction(name: '_TransactionStoreStore.refresh');
+    final _$actionInfo = _$TransactionStoreStoreBaseActionController
+        .startAction(name: 'TransactionStoreStoreBase.refresh');
     try {
       return super.refresh();
     } finally {
-      _$_TransactionStoreStoreActionController.endAction($actionInfo);
+      _$TransactionStoreStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 

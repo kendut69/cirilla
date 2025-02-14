@@ -13,25 +13,25 @@ mixin _$CheckoutAddressStore on CheckoutAddressStoreBase, Store {
 
   @override
   bool get loading => (_$loadingComputed ??= Computed<bool>(() => super.loading,
-      name: 'CheckoutAddressStoreBase.loading'))
+          name: 'CheckoutAddressStoreBase.loading'))
       .value;
   Computed<ObservableMap<String, AddressData>>? _$addressesComputed;
 
   @override
   ObservableMap<String, AddressData> get addresses => (_$addressesComputed ??=
-      Computed<ObservableMap<String, AddressData>>(() => super.addresses,
-          name: 'CheckoutAddressStoreBase.addresses'))
+          Computed<ObservableMap<String, AddressData>>(() => super.addresses,
+              name: 'CheckoutAddressStoreBase.addresses'))
       .value;
   Computed<String>? _$countryDefaultComputed;
 
   @override
   String get countryDefault =>
       (_$countryDefaultComputed ??= Computed<String>(() => super.countryDefault,
-          name: 'CheckoutAddressStoreBase.countryDefault'))
+              name: 'CheckoutAddressStoreBase.countryDefault'))
           .value;
 
   late final _$_addressesAtom =
-  Atom(name: 'CheckoutAddressStoreBase._addresses', context: context);
+      Atom(name: 'CheckoutAddressStoreBase._addresses', context: context);
 
   @override
   ObservableMap<String, AddressData> get _addresses {
@@ -47,7 +47,7 @@ mixin _$CheckoutAddressStore on CheckoutAddressStoreBase, Store {
   }
 
   late final _$_countryDefaultAtom =
-  Atom(name: 'CheckoutAddressStoreBase._countryDefault', context: context);
+      Atom(name: 'CheckoutAddressStoreBase._countryDefault', context: context);
 
   @override
   String get _countryDefault {
@@ -63,7 +63,7 @@ mixin _$CheckoutAddressStore on CheckoutAddressStoreBase, Store {
   }
 
   late final _$_loadingAtom =
-  Atom(name: 'CheckoutAddressStoreBase._loading', context: context);
+      Atom(name: 'CheckoutAddressStoreBase._loading', context: context);
 
   @override
   bool get _loading {
@@ -79,7 +79,7 @@ mixin _$CheckoutAddressStore on CheckoutAddressStoreBase, Store {
   }
 
   late final _$getAddressesAsyncAction =
-  AsyncAction('CheckoutAddressStoreBase.getAddresses', context: context);
+      AsyncAction('CheckoutAddressStoreBase.getAddresses', context: context);
 
   @override
   Future<void> getAddresses(List<String> countries, String lang) {

@@ -27,7 +27,13 @@ class OrderDetailScreen extends StatefulWidget {
 }
 
 class _OrderDetailScreenState extends State<OrderDetailScreen>
-    with Utility, LoadingMixin, AppBarMixin, NavigationMixin, OrderMixin, SnackMixin {
+    with
+        Utility,
+        LoadingMixin,
+        AppBarMixin,
+        NavigationMixin,
+        OrderMixin,
+        SnackMixin {
   late AuthStore _authStore;
   RequestHelper? _requestHelper;
   OrderData? _orderData;
@@ -133,9 +139,11 @@ class _OrderDetailScreenState extends State<OrderDetailScreen>
     return Observer(
       builder: (_) {
         return Scaffold(
-          appBar: baseStyleAppBar(context, title: translate('order_title', {'id': '# $titleAppBar'})),
+          appBar: baseStyleAppBar(context,
+              title: translate('order_title', {'id': '# $titleAppBar'})),
           body: ListView(
-            padding: const EdgeInsetsDirectional.only(start: 20, end: 20, top: 20),
+            padding:
+                const EdgeInsetsDirectional.only(start: 20, end: 20, top: 20),
             children: [
               Container(
                 decoration: decoration,
@@ -144,26 +152,34 @@ class _OrderDetailScreenState extends State<OrderDetailScreen>
                   children: [
                     buildItem(
                       padding: const EdgeInsetsDirectional.only(
-                          start: itemPaddingMedium, end: itemPaddingMedium, top: itemPaddingMedium),
+                          start: itemPaddingMedium,
+                          end: itemPaddingMedium,
+                          top: itemPaddingMedium),
                       title: translate('order_number'),
                       subTitle: '${_orderData!.id}',
                       status: buildStatus(theme, translate, _orderData!),
                     ),
                     buildItem(
-                      padding: const EdgeInsetsDirectional.only(start: itemPaddingMedium),
+                      padding: const EdgeInsetsDirectional.only(
+                          start: itemPaddingMedium),
                       title: translate('order_date'),
-                      subTitle: formatDate(date: _orderData!.dateCreated!, locate: getLocate(context)),
+                      subTitle: formatDate(
+                          date: _orderData!.dateCreated!,
+                          locate: getLocate(context)),
                     ),
                     buildItem(
-                        padding: const EdgeInsetsDirectional.only(start: itemPaddingMedium),
+                        padding: const EdgeInsetsDirectional.only(
+                            start: itemPaddingMedium),
                         title: translate('order_email'),
                         subTitle: _authStore.user!.userEmail!),
                     buildItem(
-                        padding: const EdgeInsetsDirectional.only(start: itemPaddingMedium),
+                        padding: const EdgeInsetsDirectional.only(
+                            start: itemPaddingMedium),
                         title: translate('order_total'),
                         subTitle: price(_orderData!.total)),
                     buildItem(
-                        padding: const EdgeInsetsDirectional.only(start: itemPaddingMedium),
+                        padding: const EdgeInsetsDirectional.only(
+                            start: itemPaddingMedium),
                         title: translate('order_payment_method'),
                         subTitle: _orderData!.paymentMethodTitle ?? ''),
                     Padding(
@@ -175,23 +191,29 @@ class _OrderDetailScreenState extends State<OrderDetailScreen>
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(translate('order_shipping_method'), style: itemStyle),
+                          Text(translate('order_shipping_method'),
+                              style: itemStyle),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               if (shippingLines != null) ...[
                                 Flexible(
-                                    child: Text(shippingLines.map((e) => e.methodTitle).join(' , '),
+                                    child: Text(
+                                        shippingLines
+                                            .map((e) => e.methodTitle)
+                                            .join(' , '),
                                         style: textTheme.titleSmall)),
                               ],
-                              Text(price(_orderData!.shippingTotal), style: textTheme.titleSmall)
+                              Text(price(_orderData!.shippingTotal),
+                                  style: textTheme.titleSmall)
                             ],
                           )
                         ],
                       ),
                     ),
                     if (actions != null) ...[
-                      const Divider(height: itemPaddingExtraLarge, thickness: 1),
+                      const Divider(
+                          height: itemPaddingExtraLarge, thickness: 1),
                       Padding(
                         padding: const EdgeInsetsDirectional.only(
                           start: itemPaddingMedium,
@@ -210,7 +232,8 @@ class _OrderDetailScreenState extends State<OrderDetailScreen>
                 color: textColor,
               ),
               Padding(
-                padding: const EdgeInsets.only(top: layoutPadding * 2, bottom: itemPaddingLarge),
+                padding: const EdgeInsets.only(
+                    top: layoutPadding * 2, bottom: itemPaddingLarge),
                 child: Text(
                   translate('order_information'),
                   style: textTheme.titleMedium,
@@ -225,13 +248,15 @@ class _OrderDetailScreenState extends State<OrderDetailScreen>
                     currency: currency,
                     currencySymbol: currencySymbol,
                     onClick: () {
-                      Navigator.pushNamed(context, '${ProductScreen.routeName}/$id');
+                      Navigator.pushNamed(
+                          context, '${ProductScreen.routeName}/$id');
                     },
                   );
                 }),
               ],
               Padding(
-                padding: const EdgeInsets.only(top: layoutPadding * 2, bottom: itemPaddingMedium),
+                padding: const EdgeInsets.only(
+                    top: layoutPadding * 2, bottom: itemPaddingMedium),
                 child: Text(
                   translate('order_billing_address'),
                   style: textTheme.titleMedium,
@@ -240,10 +265,12 @@ class _OrderDetailScreenState extends State<OrderDetailScreen>
               Container(
                 padding: paddingMedium,
                 decoration: decoration,
-                child: OrderBilling(billingData: billingData, style: textTheme.bodyMedium),
+                child: OrderBilling(
+                    billingData: billingData, style: textTheme.bodyMedium),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: layoutPadding * 2, bottom: itemPaddingMedium),
+                padding: const EdgeInsets.only(
+                    top: layoutPadding * 2, bottom: itemPaddingMedium),
                 child: Text(
                   translate('order_shipping_address'),
                   style: textTheme.titleMedium,
@@ -252,21 +279,33 @@ class _OrderDetailScreenState extends State<OrderDetailScreen>
               Container(
                 padding: paddingMedium,
                 decoration: decoration,
-                child: OrderBilling(billingData: shippingData, style: textTheme.bodyMedium),
+                child: OrderBilling(
+                    billingData: shippingData, style: textTheme.bodyMedium),
               ),
               const SizedBox(height: layoutPadding * 2),
-              buildItem(leading: translate('order_shipping'), trailing: price(_orderData!.shippingTotal)),
-              buildItem(leading: translate('order_shipping_tax'), trailing: price(_orderData!.shippingTax)),
-              buildItem(leading: translate('order_tax'), trailing: price(_orderData!.cartTax)),
-              buildItem(leading: translate('order_discount'), trailing: price(_orderData!.discountTotal)),
-              buildItem(leading: translate('order_discount_tax'), trailing: price(_orderData!.discountTax)),
+              buildItem(
+                  leading: translate('order_shipping'),
+                  trailing: price(_orderData!.shippingTotal)),
+              buildItem(
+                  leading: translate('order_shipping_tax'),
+                  trailing: price(_orderData!.shippingTax)),
+              buildItem(
+                  leading: translate('order_tax'),
+                  trailing: price(_orderData!.cartTax)),
+              buildItem(
+                  leading: translate('order_discount'),
+                  trailing: price(_orderData!.discountTotal)),
+              buildItem(
+                  leading: translate('order_discount_tax'),
+                  trailing: price(_orderData!.discountTax)),
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                 Text(translate('order_total'), style: textTheme.titleSmall),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(price(_orderData!.total), style: textTheme.titleLarge),
-                    Text(translate('order_include'), style: textTheme.labelSmall)
+                    Text(translate('order_include'),
+                        style: textTheme.labelSmall)
                   ],
                 )
               ]),
@@ -293,13 +332,15 @@ class _OrderDetailScreenState extends State<OrderDetailScreen>
       children: [
         Padding(
           padding: padding ?? EdgeInsetsDirectional.zero,
-          child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+          child:
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             if (leading != null) Text(leading, style: textTheme.bodySmall),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 if (title != null) Text(title, style: textTheme.bodySmall),
-                if (subTitle != null) Text(subTitle, style: textTheme.titleSmall),
+                if (subTitle != null)
+                  Text(subTitle, style: textTheme.titleSmall),
               ],
             ),
             if (trailing != null)

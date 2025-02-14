@@ -6,33 +6,44 @@ part of 'brand_store.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$BrandStore on BrandStoreBase, Store {
   Computed<bool>? _$loadingComputed;
 
   @override
-  bool get loading => (_$loadingComputed ??= Computed<bool>(() => super.loading, name: '_BrandStore.loading')).value;
+  bool get loading => (_$loadingComputed ??=
+          Computed<bool>(() => super.loading, name: 'BrandStoreBase.loading'))
+      .value;
   Computed<int>? _$nextPageComputed;
 
   @override
-  int get nextPage => (_$nextPageComputed ??= Computed<int>(() => super.nextPage, name: '_BrandStore.nextPage')).value;
+  int get nextPage => (_$nextPageComputed ??=
+          Computed<int>(() => super.nextPage, name: 'BrandStoreBase.nextPage'))
+      .value;
   Computed<ObservableList<Brand>>? _$brandsComputed;
 
   @override
   ObservableList<Brand> get brands =>
-      (_$brandsComputed ??= Computed<ObservableList<Brand>>(() => super.brands, name: '_BrandStore.brands')).value;
+      (_$brandsComputed ??= Computed<ObservableList<Brand>>(() => super.brands,
+              name: 'BrandStoreBase.brands'))
+          .value;
   Computed<bool>? _$canLoadMoreComputed;
 
   @override
   bool get canLoadMore =>
-      (_$canLoadMoreComputed ??= Computed<bool>(() => super.canLoadMore, name: '_BrandStore.canLoadMore')).value;
+      (_$canLoadMoreComputed ??= Computed<bool>(() => super.canLoadMore,
+              name: 'BrandStoreBase.canLoadMore'))
+          .value;
   Computed<int>? _$perPageComputed;
 
   @override
-  int get perPage => (_$perPageComputed ??= Computed<int>(() => super.perPage, name: '_BrandStore.perPage')).value;
+  int get perPage => (_$perPageComputed ??=
+          Computed<int>(() => super.perPage, name: 'BrandStoreBase.perPage'))
+      .value;
 
-  final _$fetchBrandsFutureAtom = Atom(name: '_BrandStore.fetchBrandsFuture');
+  late final _$fetchBrandsFutureAtom =
+      Atom(name: 'BrandStoreBase.fetchBrandsFuture', context: context);
 
   @override
   ObservableFuture<List<Brand>?> get fetchBrandsFuture {
@@ -47,7 +58,8 @@ mixin _$BrandStore on BrandStoreBase, Store {
     });
   }
 
-  final _$_brandsAtom = Atom(name: '_BrandStore._brands');
+  late final _$_brandsAtom =
+      Atom(name: 'BrandStoreBase._brands', context: context);
 
   @override
   ObservableList<Brand> get _brands {
@@ -62,7 +74,8 @@ mixin _$BrandStore on BrandStoreBase, Store {
     });
   }
 
-  final _$_perPageAtom = Atom(name: '_BrandStore._perPage');
+  late final _$_perPageAtom =
+      Atom(name: 'BrandStoreBase._perPage', context: context);
 
   @override
   int get _perPage {
@@ -77,7 +90,8 @@ mixin _$BrandStore on BrandStoreBase, Store {
     });
   }
 
-  final _$_nextPageAtom = Atom(name: '_BrandStore._nextPage');
+  late final _$_nextPageAtom =
+      Atom(name: 'BrandStoreBase._nextPage', context: context);
 
   @override
   int get _nextPage {
@@ -92,7 +106,8 @@ mixin _$BrandStore on BrandStoreBase, Store {
     });
   }
 
-  final _$_canLoadMoreAtom = Atom(name: '_BrandStore._canLoadMore');
+  late final _$_canLoadMoreAtom =
+      Atom(name: 'BrandStoreBase._canLoadMore', context: context);
 
   @override
   bool get _canLoadMore {
@@ -107,29 +122,34 @@ mixin _$BrandStore on BrandStoreBase, Store {
     });
   }
 
-  final _$getBrandsAsyncAction = AsyncAction('_BrandStore.getBrands');
+  late final _$getBrandsAsyncAction =
+      AsyncAction('BrandStoreBase.getBrands', context: context);
 
   @override
   Future<List<Brand>> getBrands({CancelToken? token}) {
     return _$getBrandsAsyncAction.run(() => super.getBrands(token: token));
   }
 
-  final _$getBrandAsyncAction = AsyncAction('_BrandStore.getBrand');
+  late final _$getBrandAsyncAction =
+      AsyncAction('BrandStoreBase.getBrand', context: context);
 
   @override
   Future<Brand> getBrand({required int id, CancelToken? token}) {
-    return _$getBrandAsyncAction.run(() => super.getBrand(id: id, token: token));
+    return _$getBrandAsyncAction
+        .run(() => super.getBrand(id: id, token: token));
   }
 
-  final _$_BrandStoreActionController = ActionController(name: '_BrandStore');
+  late final _$BrandStoreBaseActionController =
+      ActionController(name: 'BrandStoreBase', context: context);
 
   @override
   Future<void> refresh() {
-    final $actionInfo = _$_BrandStoreActionController.startAction(name: '_BrandStore.refresh');
+    final _$actionInfo = _$BrandStoreBaseActionController.startAction(
+        name: 'BrandStoreBase.refresh');
     try {
       return super.refresh();
     } finally {
-      _$_BrandStoreActionController.endAction($actionInfo);
+      _$BrandStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 

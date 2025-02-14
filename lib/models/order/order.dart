@@ -78,6 +78,8 @@ class OrderData {
   factory OrderData.fromJson(Map<String, dynamic> json) =>
       _$OrderDataFromJson(json);
 
+  get paymentMethodTitle => null;
+
   Map<String, dynamic> toJson() => _$OrderDataToJson(this);
 
   static List<LineItems> toList(List<dynamic>? data) {

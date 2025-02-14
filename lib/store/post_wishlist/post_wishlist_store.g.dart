@@ -6,20 +6,25 @@ part of 'post_wishlist_store.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$PostWishListStore on PostWishListStoreBase, Store {
   Computed<ObservableList<String>>? _$dataComputed;
 
   @override
   ObservableList<String> get data =>
-      (_$dataComputed ??= Computed<ObservableList<String>>(() => super.data, name: '_PostWishListStore.data')).value;
+      (_$dataComputed ??= Computed<ObservableList<String>>(() => super.data,
+              name: 'PostWishListStoreBase.data'))
+          .value;
   Computed<int>? _$countComputed;
 
   @override
-  int get count => (_$countComputed ??= Computed<int>(() => super.count, name: '_PostWishListStore.count')).value;
+  int get count => (_$countComputed ??=
+          Computed<int>(() => super.count, name: 'PostWishListStoreBase.count'))
+      .value;
 
-  final _$_dataAtom = Atom(name: '_PostWishListStore._data');
+  late final _$_dataAtom =
+      Atom(name: 'PostWishListStoreBase._data', context: context);
 
   @override
   ObservableList<String> get _data {
@@ -34,22 +39,26 @@ mixin _$PostWishListStore on PostWishListStoreBase, Store {
     });
   }
 
-  final _$addWishListAsyncAction = AsyncAction('_PostWishListStore.addWishList');
+  late final _$addWishListAsyncAction =
+      AsyncAction('PostWishListStoreBase.addWishList', context: context);
 
   @override
   Future<bool> addWishList(String value, {int? position}) {
-    return _$addWishListAsyncAction.run(() => super.addWishList(value, position: position));
+    return _$addWishListAsyncAction
+        .run(() => super.addWishList(value, position: position));
   }
 
-  final _$_PostWishListStoreActionController = ActionController(name: '_PostWishListStore');
+  late final _$PostWishListStoreBaseActionController =
+      ActionController(name: 'PostWishListStoreBase', context: context);
 
   @override
   bool exist(String value) {
-    final $actionInfo = _$_PostWishListStoreActionController.startAction(name: '_PostWishListStore.exist');
+    final _$actionInfo = _$PostWishListStoreBaseActionController.startAction(
+        name: 'PostWishListStoreBase.exist');
     try {
       return super.exist(value);
     } finally {
-      _$_PostWishListStoreActionController.endAction($actionInfo);
+      _$PostWishListStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 

@@ -78,14 +78,12 @@ mixin _$ResetPasswordStore on ResetPasswordStoreBase, Store {
     });
   }
 
-  late final _$ResetPasswordAppAsyncAction = AsyncAction(
-      'ResetPasswordStoreBase.ResetPasswordApp',
-      context: context);
+  late final _$resetPasswordAsyncAction =
+      AsyncAction('ResetPasswordStoreBase.resetPassword', context: context);
 
   @override
   Future<Map<String, dynamic>> resetPassword(String? userLogin) {
-    return _$ResetPasswordAppAsyncAction
-        .run(() => super.resetPassword(userLogin));
+    return _$resetPasswordAsyncAction.run(() => super.resetPassword(userLogin));
   }
 
   late final _$verifyOtpResetPasswordAsyncAction = AsyncAction(
@@ -94,9 +92,12 @@ mixin _$ResetPasswordStore on ResetPasswordStoreBase, Store {
 
   @override
   Future<Map<String, dynamic>> verifyOtpResetPassword(
-      {required String userLogin, required int otp, required Map<String,dynamic> captcha}) {
-    return _$verifyOtpResetPasswordAsyncAction.run(
-        () => super.verifyOtpResetPassword(userLogin: userLogin, otp: otp, captcha: captcha));
+      {required String userLogin,
+      required int otp,
+      required Map<String, dynamic> captcha}) {
+    return _$verifyOtpResetPasswordAsyncAction.run(() => super
+        .verifyOtpResetPassword(
+            userLogin: userLogin, otp: otp, captcha: captcha));
   }
 
   late final _$updatePasswordAsyncAction =

@@ -8,7 +8,7 @@ part of 'member_group.dart';
 
 BPMemberGroup _$BPMemberGroupFromJson(Map<String, dynamic> json) =>
     BPMemberGroup(
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
       name: json['name'] as String?,
       userLogin: json['user_login'] as String?,
       mentionName: json['mention_name'] as String?,

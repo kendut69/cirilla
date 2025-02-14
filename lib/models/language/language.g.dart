@@ -35,7 +35,10 @@ final _$getLanguagesJsonLiteral = {
   'ca': {'name': 'Catalan; Valencian', 'nativeName': 'Català'},
   'ch': {'name': 'Chamorro', 'nativeName': 'Chamoru'},
   'ce': {'name': 'Chechen', 'nativeName': 'нохчийн мотт'},
-  'ny': {'name': 'Chichewa; Chewa; Nyanja', 'nativeName': 'chiCheŵa, chinyanja'},
+  'ny': {
+    'name': 'Chichewa; Chewa; Nyanja',
+    'nativeName': 'chiCheŵa, chinyanja'
+  },
   'zh': {'name': 'Chinese', 'nativeName': '中文 (Zhōngwén), 汉语, 漢語'},
   'cv': {'name': 'Chuvash', 'nativeName': 'чӑваш чӗлхи'},
   'kw': {'name': 'Cornish', 'nativeName': 'Kernewek'},
@@ -54,7 +57,10 @@ final _$getLanguagesJsonLiteral = {
   'fj': {'name': 'Fijian', 'nativeName': 'vosa Vakaviti'},
   'fi': {'name': 'Finnish', 'nativeName': 'suomi, suomen kieli'},
   'fr': {'name': 'French', 'nativeName': 'français, langue française'},
-  'ff': {'name': 'Fula; Fulah; Pulaar; Pular', 'nativeName': 'Fulfulde, Pulaar, Pular'},
+  'ff': {
+    'name': 'Fula; Fulah; Pulaar; Pular',
+    'nativeName': 'Fulfulde, Pulaar, Pular'
+  },
   'gl': {'name': 'Galician', 'nativeName': 'Galego'},
   'ka': {'name': 'Georgian', 'nativeName': 'ქართული'},
   'de': {'name': 'German', 'nativeName': 'Deutsch'},
@@ -71,7 +77,10 @@ final _$getLanguagesJsonLiteral = {
   'hu': {'name': 'Hungarian', 'nativeName': 'Magyar'},
   'ia': {'name': 'Interlingua', 'nativeName': 'Interlingua'},
   'id': {'name': 'Indonesian', 'nativeName': 'Bahasa Indonesia'},
-  'ie': {'name': 'Interlingue', 'nativeName': 'Originally called Occidental; then Interlingue after WWII'},
+  'ie': {
+    'name': 'Interlingue',
+    'nativeName': 'Originally called Occidental; then Interlingue after WWII'
+  },
   'ga': {'name': 'Irish', 'nativeName': 'Gaeilge'},
   'ig': {'name': 'Igbo', 'nativeName': 'Asụsụ Igbo'},
   'ik': {'name': 'Inupiaq', 'nativeName': 'Iñupiaq, Iñupiatun'},
@@ -81,7 +90,10 @@ final _$getLanguagesJsonLiteral = {
   'iu': {'name': 'Inuktitut', 'nativeName': 'ᐃᓄᒃᑎᑐᑦ'},
   'ja': {'name': 'Japanese', 'nativeName': '日本語 (にほんご／にっぽんご)'},
   'jv': {'name': 'Javanese', 'nativeName': 'basa Jawa'},
-  'kl': {'name': 'Kalaallisut, Greenlandic', 'nativeName': 'kalaallisut, kalaallit oqaasii'},
+  'kl': {
+    'name': 'Kalaallisut, Greenlandic',
+    'nativeName': 'kalaallisut, kalaallit oqaasii'
+  },
   'kn': {'name': 'Kannada', 'nativeName': 'ಕನ್ನಡ'},
   'kr': {'name': 'Kanuri', 'nativeName': 'Kanuri'},
   'ks': {'name': 'Kashmiri', 'nativeName': 'कश्मीरी, كشميري‎'},
@@ -96,7 +108,10 @@ final _$getLanguagesJsonLiteral = {
   'ku': {'name': 'Kurdish', 'nativeName': 'Kurdî, كوردی‎'},
   'kj': {'name': 'Kwanyama, Kuanyama', 'nativeName': 'Kuanyama'},
   'la': {'name': 'Latin', 'nativeName': 'latine, lingua latina'},
-  'lb': {'name': 'Luxembourgish, Letzeburgesch', 'nativeName': 'Lëtzebuergesch'},
+  'lb': {
+    'name': 'Luxembourgish, Letzeburgesch',
+    'nativeName': 'Lëtzebuergesch'
+  },
   'lg': {'name': 'Luganda', 'nativeName': 'Luganda'},
   'li': {'name': 'Limburgish, Limburgan, Limburger', 'nativeName': 'Limburgs'},
   'ln': {'name': 'Lingala', 'nativeName': 'Lingála'},
@@ -127,7 +142,8 @@ final _$getLanguagesJsonLiteral = {
   'oc': {'name': 'Occitan', 'nativeName': 'Occitan'},
   'oj': {'name': 'Ojibwe, Ojibwa', 'nativeName': 'ᐊᓂᔑᓈᐯᒧᐎᓐ'},
   'cu': {
-    'name': 'Old Church Slavonic, Church Slavic, Church Slavonic, Old Bulgarian, Old Slavonic',
+    'name':
+        'Old Church Slavonic, Church Slavic, Church Slavonic, Old Bulgarian, Old Slavonic',
     'nativeName': 'ѩзыкъ словѣньскъ'
   },
   'om': {'name': 'Oromo', 'nativeName': 'Afaan Oromoo'},

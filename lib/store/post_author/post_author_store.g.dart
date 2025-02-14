@@ -6,31 +6,38 @@ part of 'post_author_store.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$PostAuthorStore on PostAuthorStoreBase, Store {
   Computed<bool>? _$loadingComputed;
 
   @override
-  bool get loading =>
-      (_$loadingComputed ??= Computed<bool>(() => super.loading, name: '_PostAuthorStore.loading')).value;
+  bool get loading => (_$loadingComputed ??= Computed<bool>(() => super.loading,
+          name: 'PostAuthorStoreBase.loading'))
+      .value;
   Computed<ObservableList<PostAuthor>>? _$postAuthorsComputed;
 
   @override
   ObservableList<PostAuthor> get postAuthors => (_$postAuthorsComputed ??=
-          Computed<ObservableList<PostAuthor>>(() => super.postAuthors, name: '_PostAuthorStore.postAuthors'))
+          Computed<ObservableList<PostAuthor>>(() => super.postAuthors,
+              name: 'PostAuthorStoreBase.postAuthors'))
       .value;
   Computed<bool>? _$canLoadMoreComputed;
 
   @override
   bool get canLoadMore =>
-      (_$canLoadMoreComputed ??= Computed<bool>(() => super.canLoadMore, name: '_PostAuthorStore.canLoadMore')).value;
+      (_$canLoadMoreComputed ??= Computed<bool>(() => super.canLoadMore,
+              name: 'PostAuthorStoreBase.canLoadMore'))
+          .value;
   Computed<int>? _$perPageComputed;
 
   @override
-  int get perPage => (_$perPageComputed ??= Computed<int>(() => super.perPage, name: '_PostAuthorStore.perPage')).value;
+  int get perPage => (_$perPageComputed ??= Computed<int>(() => super.perPage,
+          name: 'PostAuthorStoreBase.perPage'))
+      .value;
 
-  final _$fetchPostAuthorsFutureAtom = Atom(name: '_PostAuthorStore.fetchPostAuthorsFuture');
+  late final _$fetchPostAuthorsFutureAtom = Atom(
+      name: 'PostAuthorStoreBase.fetchPostAuthorsFuture', context: context);
 
   @override
   ObservableFuture<List<PostAuthor>?> get fetchPostAuthorsFuture {
@@ -40,12 +47,14 @@ mixin _$PostAuthorStore on PostAuthorStoreBase, Store {
 
   @override
   set fetchPostAuthorsFuture(ObservableFuture<List<PostAuthor>?> value) {
-    _$fetchPostAuthorsFutureAtom.reportWrite(value, super.fetchPostAuthorsFuture, () {
+    _$fetchPostAuthorsFutureAtom
+        .reportWrite(value, super.fetchPostAuthorsFuture, () {
       super.fetchPostAuthorsFuture = value;
     });
   }
 
-  final _$_postAuthorsAtom = Atom(name: '_PostAuthorStore._postAuthors');
+  late final _$_postAuthorsAtom =
+      Atom(name: 'PostAuthorStoreBase._postAuthors', context: context);
 
   @override
   ObservableList<PostAuthor> get _postAuthors {
@@ -60,7 +69,8 @@ mixin _$PostAuthorStore on PostAuthorStoreBase, Store {
     });
   }
 
-  final _$successAtom = Atom(name: '_PostAuthorStore.success');
+  late final _$successAtom =
+      Atom(name: 'PostAuthorStoreBase.success', context: context);
 
   @override
   bool get success {
@@ -75,7 +85,8 @@ mixin _$PostAuthorStore on PostAuthorStoreBase, Store {
     });
   }
 
-  final _$_nextPageAtom = Atom(name: '_PostAuthorStore._nextPage');
+  late final _$_nextPageAtom =
+      Atom(name: 'PostAuthorStoreBase._nextPage', context: context);
 
   @override
   int get _nextPage {
@@ -90,7 +101,8 @@ mixin _$PostAuthorStore on PostAuthorStoreBase, Store {
     });
   }
 
-  final _$_perPageAtom = Atom(name: '_PostAuthorStore._perPage');
+  late final _$_perPageAtom =
+      Atom(name: 'PostAuthorStoreBase._perPage', context: context);
 
   @override
   int get _perPage {
@@ -105,7 +117,8 @@ mixin _$PostAuthorStore on PostAuthorStoreBase, Store {
     });
   }
 
-  final _$_canLoadMoreAtom = Atom(name: '_PostAuthorStore._canLoadMore');
+  late final _$_canLoadMoreAtom =
+      Atom(name: 'PostAuthorStoreBase._canLoadMore', context: context);
 
   @override
   bool get _canLoadMore {
@@ -120,7 +133,8 @@ mixin _$PostAuthorStore on PostAuthorStoreBase, Store {
     });
   }
 
-  final _$_langAtom = Atom(name: '_PostAuthorStore._lang');
+  late final _$_langAtom =
+      Atom(name: 'PostAuthorStoreBase._lang', context: context);
 
   @override
   String? get _lang {
@@ -135,22 +149,25 @@ mixin _$PostAuthorStore on PostAuthorStoreBase, Store {
     });
   }
 
-  final _$getPostAuthorsAsyncAction = AsyncAction('_PostAuthorStore.getPostAuthors');
+  late final _$getPostAuthorsAsyncAction =
+      AsyncAction('PostAuthorStoreBase.getPostAuthors', context: context);
 
   @override
   Future<void> getPostAuthors() {
     return _$getPostAuthorsAsyncAction.run(() => super.getPostAuthors());
   }
 
-  final _$_PostAuthorStoreActionController = ActionController(name: '_PostAuthorStore');
+  late final _$PostAuthorStoreBaseActionController =
+      ActionController(name: 'PostAuthorStoreBase', context: context);
 
   @override
   Future<void> refresh() {
-    final $actionInfo = _$_PostAuthorStoreActionController.startAction(name: '_PostAuthorStore.refresh');
+    final _$actionInfo = _$PostAuthorStoreBaseActionController.startAction(
+        name: 'PostAuthorStoreBase.refresh');
     try {
       return super.refresh();
     } finally {
-      _$_PostAuthorStoreActionController.endAction($actionInfo);
+      _$PostAuthorStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 

@@ -7,9 +7,9 @@ part of 'group.dart';
 // **************************************************************************
 
 BPGroup _$BPGroupFromJson(Map<String, dynamic> json) => BPGroup(
-      id: json['id'] as int?,
-      creatorId: json['creator_id'] as int?,
-      parentId: json['parent_id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
+      creatorId: (json['creator_id'] as num?)?.toInt(),
+      parentId: (json['parent_id'] as num?)?.toInt(),
       name: json['name'] as String?,
       status: json['status'] as String?,
       createdAt: convertToDate(json['date_created_gmt']),

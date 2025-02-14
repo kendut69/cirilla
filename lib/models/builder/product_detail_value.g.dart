@@ -6,7 +6,8 @@ part of 'product_detail_value.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ProductDetailValue _$ProductDetailValueFromJson(Map<String, dynamic> json) => ProductDetailValue(
+ProductDetailValue _$ProductDetailValueFromJson(Map<String, dynamic> json) =>
+    ProductDetailValue(
       type: json['type'] as String?,
       customType: json['customType'] as String? ?? 'text',
       text: json['text'] as Map<String, dynamic>?,
@@ -14,8 +15,10 @@ ProductDetailValue _$ProductDetailValueFromJson(Map<String, dynamic> json) => Pr
       action: ProductDetailValue._toMapAction(json['action']),
       buttonBg: json['buttonBg'] as Map<String, dynamic>?,
       buttonBorderColor: json['buttonBorderColor'] as Map<String, dynamic>?,
-      buttonBorderRadius: ProductDetailValue._toDouble(json['buttonBorderRadius']),
-      buttonBorderWidth: ProductDetailValue._toDouble(json['buttonBorderWidth']),
+      buttonBorderRadius:
+          ProductDetailValue._toDouble(json['buttonBorderRadius']),
+      buttonBorderWidth:
+          ProductDetailValue._toDouble(json['buttonBorderWidth']),
       buttonSize: ProductDetailValue._toSize(json['buttonSize']),
       icon: json['icon'] as Map<String, dynamic>?,
       iconColor: json['iconColor'] as Map<String, dynamic>?,
@@ -24,7 +27,8 @@ ProductDetailValue _$ProductDetailValueFromJson(Map<String, dynamic> json) => Pr
       customFieldName: json['customFieldName'] as String?,
     );
 
-Map<String, dynamic> _$ProductDetailValueToJson(ProductDetailValue instance) => <String, dynamic>{
+Map<String, dynamic> _$ProductDetailValueToJson(ProductDetailValue instance) =>
+    <String, dynamic>{
       'type': instance.type,
       'customType': instance.customType,
       'text': instance.text,

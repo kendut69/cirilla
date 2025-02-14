@@ -7,7 +7,7 @@ part of 'variable.dart';
 // **************************************************************************
 
 Variable _$VariableFromJson(Map<String, dynamic> json) => Variable(
-      id: json['variation_id'] as int?,
+      id: (json['variation_id'] as num?)?.toInt(),
       attributes: json['attributes'] as Map<String, dynamic>?,
       price: (json['display_price'] as num?)?.toDouble(),
       regularPrice: (json['display_regular_price'] as num?)?.toDouble(),

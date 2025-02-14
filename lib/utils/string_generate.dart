@@ -6,8 +6,10 @@ import 'package:cirilla/models/models.dart';
 class StringGenerate {
   static String uuid([int length = 9]) {
     Random r = Random();
-    const chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
-    return List.generate(length, (index) => chars[r.nextInt(chars.length)]).join();
+    const chars =
+        'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
+    return List.generate(length, (index) => chars[r.nextInt(chars.length)])
+        .join();
   }
 
   // Generate product store key
@@ -27,13 +29,15 @@ class StringGenerate {
     String? key = id;
 
     if (excludeProduct != null && excludeProduct.isNotEmpty) {
-      String keyExcludes = excludeProduct.map((product) => "${product.id}").join('_');
+      String keyExcludes =
+          excludeProduct.map((product) => "${product.id}").join('_');
 
       key = "${key}_exclude=$keyExcludes";
     }
 
     if (includeProduct != null && includeProduct.isNotEmpty) {
-      String keyIncludes = includeProduct.map((product) => "${product.id}").join('_');
+      String keyIncludes =
+          includeProduct.map((product) => "${product.id}").join('_');
 
       key = "${key}_include=$keyIncludes";
     }
@@ -67,7 +71,7 @@ class StringGenerate {
     if (enableGeoSearch != null) {
       key = "${key}_enableGeoSearch=$enableGeoSearch";
     }
-    if (customQuery?.isNotEmpty ==true) {
+    if (customQuery?.isNotEmpty == true) {
       key = "${key}_customQuery=${jsonEncode(customQuery)}";
     }
 
@@ -125,7 +129,8 @@ class StringGenerate {
     }
 
     if (categories != null) {
-      String keyCategories = categories.map((category) => "${category.id}").join('_');
+      String keyCategories =
+          categories.map((category) => "${category.id}").join('_');
 
       key = "${key}_categories=$keyCategories";
     }
@@ -235,9 +240,9 @@ class StringGenerate {
 
   // Generate brand store key
   static String? getPointKeyStore(
-      String? id, {
-        String? userId,
-      }) {
+    String? id, {
+    String? userId,
+  }) {
     String? key = id;
 
     if (userId != null) {
@@ -252,7 +257,6 @@ class StringGenerate {
     String? id, {
     String? userId,
   }) {
-
     String? key = id;
 
     if (userId != null) {
@@ -261,4 +265,12 @@ class StringGenerate {
 
     return key;
   }
+
+  Map<String, String> checkoutTranslations = {
+    'checkout_payment_plan': 'Payment Plan',
+    'checkout_order_payment_plan': 'Order Payment Plan',
+    'checkout_product_payment_plan': 'Product Payment Plan',
+    'checkout_down_payment': 'Down Payment',
+    'checkout_total_payable': 'Total Payable Amount',
+  };
 }

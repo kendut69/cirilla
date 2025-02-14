@@ -7,24 +7,28 @@ part of 'post_comment.dart';
 // **************************************************************************
 
 PostComment _$PostCommentFromJson(Map<String, dynamic> json) => PostComment(
-      id: json['id'] as int?,
-      author: json['author'] as int?,
+      id: (json['id'] as num?)?.toInt(),
+      author: (json['author'] as num?)?.toInt(),
       authorEmail: json['author_email'] as String?,
       authorName: json['author_name'] as String?,
       authorUrl: json['author_url'] as String?,
-      content: json['content'] == null ? null : PostTitle.fromJson(json['content'] as Map<String, dynamic>),
+      content: json['content'] == null
+          ? null
+          : PostTitle.fromJson(json['content'] as Map<String, dynamic>),
       date: json['date'] as String?,
       dateGmt: json['date_gmt'] as String?,
-      parent: json['parent'] as int?,
-      post: json['post'] as int?,
+      parent: (json['parent'] as num?)?.toInt(),
+      post: (json['post'] as num?)?.toInt(),
       postData: json['post_data'] as Map<String, dynamic>?,
       status: json['status'] as String?,
       type: json['type'] as String?,
       children: PostComment.hasChildren(json['_links'] as Map),
-    )..avatar =
-        json['author_avatar_urls'] == null ? null : Avatar.fromJson(json['author_avatar_urls'] as Map<String, dynamic>);
+    )..avatar = json['author_avatar_urls'] == null
+        ? null
+        : Avatar.fromJson(json['author_avatar_urls'] as Map<String, dynamic>);
 
-Map<String, dynamic> _$PostCommentToJson(PostComment instance) => <String, dynamic>{
+Map<String, dynamic> _$PostCommentToJson(PostComment instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'author': instance.author,
       'author_email': instance.authorEmail,

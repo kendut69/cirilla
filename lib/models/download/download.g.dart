@@ -12,7 +12,7 @@ Download _$DownloadFromJson(Map<String, dynamic> json) => Download(
       dateExpired: json['access_expires'] as String?,
       downloadRemaining: json['downloads_remaining'] as String?,
       url: json['download_url'] as String?,
-      productId: json['product_id'] as int?,
+      productId: (json['product_id'] as num?)?.toInt(),
       productName: json['product_name'] as String?,
       file: Download.toFileDownload(json['file']),
     );

@@ -7,12 +7,13 @@ part of 'product_brand.dart';
 // **************************************************************************
 
 ProductBrand _$ProductBrandFromJson(Map<String, dynamic> json) => ProductBrand(
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
       slug: json['slug'] as String?,
       name: json['name'] as String?,
     );
 
-Map<String, dynamic> _$ProductBrandToJson(ProductBrand instance) => <String, dynamic>{
+Map<String, dynamic> _$ProductBrandToJson(ProductBrand instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'slug': instance.slug,
       'name': instance.name,

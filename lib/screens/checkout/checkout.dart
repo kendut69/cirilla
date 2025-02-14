@@ -21,6 +21,8 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:payment_base/payment_base.dart';
 import 'package:cirilla/payment_methods.dart';
 import 'package:provider/provider.dart';
+import 'package:sumo_payment_plans/services/sumo_payment_service.dart'; // Import SumoPaymentService
+import 'package:sumo_payment_plans/widgets/payment_plan_widget.dart'; // Import PaymentPlanWidget
 
 import '../../utils/webview_gateway.dart';
 import 'view/checkout_view_additional.dart';
@@ -29,7 +31,11 @@ import 'view/checkout_view_billing_address.dart';
 import 'view/checkout_view_shipping_address.dart';
 import 'view/checkout_view_ship_to_different_address.dart';
 
-List<IconData> _tabIcons = [FeatherIcons.mapPin, FeatherIcons.pocket, FeatherIcons.check];
+List<IconData> _tabIcons = [
+  FeatherIcons.mapPin,
+  FeatherIcons.pocket,
+  FeatherIcons.check
+];
 
 class Checkout extends StatefulWidget {
   static const routeName = '/checkout';
@@ -51,7 +57,8 @@ class Checkout extends StatefulWidget {
   State<Checkout> createState() => _CheckoutState();
 }
 
-class _CheckoutState extends State<Checkout> with TickerProviderStateMixin, TransitionMixin, SnackMixin, LoadingMixin {
+class _CheckoutState extends State<Checkout>
+    with TickerProviderStateMixin, TransitionMixin, SnackMixin, LoadingMixin {
   late TabController _tabController;
   late AppStore _appStore;
   late AuthStore _authStore;
@@ -70,6 +77,9 @@ class _CheckoutState extends State<Checkout> with TickerProviderStateMixin, Tran
   /// checkout address
   final _formAddressKey = GlobalKey<FormState>();
 
+  late SumoPaymentService
+      _paymentService; // Tambahkan deklarasi SumoPaymentService
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -78,17 +88,20 @@ class _CheckoutState extends State<Checkout> with TickerProviderStateMixin, Tran
     _cartStore = _authStore.cartStore;
     _settingStore = Provider.of<SettingStore>(context);
 
-    if (_cartStore.paymentStore.loading == false && _cartStore.paymentStore.gateways.isEmpty) {
+    if (_cartStore.paymentStore.loading == false &&
+        _cartStore.paymentStore.gateways.isEmpty) {
       _cartStore.paymentStore.getGateways();
     }
 
-    WidgetConfig? widgetConfig = _settingStore.data?.screens?['profile']?.widgets?['profilePage']!;
+    WidgetConfig? widgetConfig =
+        _settingStore.data?.screens?['profile']?.widgets?['profilePage']!;
     Map<String, dynamic>? fields = widgetConfig?.fields;
 
     bool enableAddressBook = get(fields, ['enableAddressBook'], false);
 
     if (enableAddressBook && _authStore.isLogin) {
-      _addressBookStore = AddressBookStore(_settingStore.requestHelper)..getAddressBook();
+      _addressBookStore = AddressBookStore(_settingStore.requestHelper)
+        ..getAddressBook();
     }
 
     Map<String, dynamic> billing = {
@@ -115,7 +128,16 @@ class _CheckoutState extends State<Checkout> with TickerProviderStateMixin, Tran
       _checkoutAddressStore = _appStore.getStoreByKey(keyCheckoutAddressStore);
     }
 
-    _checkoutAddressStore.getAddresses([countryBilling, countryShipping, ""], _settingStore.locale);
+    _checkoutAddressStore.getAddresses(
+        [countryBilling, countryShipping, ""], _settingStore.locale);
+
+    // Inisialisasi SumoPaymentService
+    _paymentService = SumoPaymentService(
+      baseUrl: _settingStore.domain,
+      customerKey: 'your_customer_key', // Ganti dengan customer key yang valid
+      customerSecret:
+          'your_customer_secret', // Ganti dengan customer secret yang valid
+    );
   }
 
   @override
@@ -147,12 +169,14 @@ class _CheckoutState extends State<Checkout> with TickerProviderStateMixin, Tran
 
   Future<void> _handleCallBack(dynamic data, PaymentBase payment) async {
     if (data == 'clean-cookies') {
-      await AppServiceInject.instance.providerCookieService.clearWebviewCookie();
+      await AppServiceInject.instance.providerCookieService
+          .clearWebviewCookie();
     } else if (data == 'set-cookies') {
       if (_authStore.isLogin) {
         await AppServiceInject.instance.providerCookieService.setUser();
       } else {
-        await AppServiceInject.instance.providerCookieService.setWebviewCookies(Uri.parse(_settingStore.checkoutUrl!));
+        await AppServiceInject.instance.providerCookieService
+            .setWebviewCookies(Uri.parse(_settingStore.checkoutUrl!));
       }
     } else if (data is DioException) {
       if (GatewayError.mapErrorMessage(data.response?.data) != null) {
@@ -173,12 +197,15 @@ class _CheckoutState extends State<Checkout> with TickerProviderStateMixin, Tran
 
   Future<void> _progressCheckout(BuildContext context) async {
     if (methods[_cartStore.paymentStore.method] == null) {
-      avoidPrint('Then payment method ${_cartStore.paymentStore.method} not implement in app yet.');
+      avoidPrint(
+          'Then payment method ${_cartStore.paymentStore.method} not implement in app yet.');
       return;
     }
 
-    PaymentBase payment = methods[_cartStore.paymentStore.method] as PaymentBase;
-    Map<String, dynamic> settings = _cartStore.paymentStore.gateways[_cartStore.paymentStore.active].settings;
+    PaymentBase payment =
+        methods[_cartStore.paymentStore.method] as PaymentBase;
+    Map<String, dynamic> settings = _cartStore
+        .paymentStore.gateways[_cartStore.paymentStore.active].settings;
 
     if (mounted) {
       Map<String, dynamic> billing = {
@@ -209,7 +236,8 @@ class _CheckoutState extends State<Checkout> with TickerProviderStateMixin, Tran
         billing: billing,
         settings: settings,
         progressServer: _cartStore.checkoutStore.progressServer,
-        cartId: '${_authStore.isLogin ? _authStore.user?.id : _cartStore.cartKey}',
+        cartId:
+            '${_authStore.isLogin ? _authStore.user?.id : _cartStore.cartKey}',
         webViewGateway: buildCirillaWebViewGateway,
       );
     }
@@ -258,7 +286,8 @@ class _CheckoutState extends State<Checkout> with TickerProviderStateMixin, Tran
                       key: _formAddressKey,
                       child: StepAddress(
                         totals: CheckoutViewCartTotals(cartStore: _cartStore),
-                        shippingMethods: _cartStore.cartData?.needsShipping == true
+                        shippingMethods: _cartStore.cartData?.needsShipping ==
+                                true
                             ? CheckoutViewShippingMethods(cartStore: _cartStore)
                             : Container(),
                         address: Observer(
@@ -272,12 +301,16 @@ class _CheckoutState extends State<Checkout> with TickerProviderStateMixin, Tran
                                       Expanded(
                                         child: RichText(
                                           text: TextSpan(
-                                            text: translate("checkout_customer"),
+                                            text:
+                                                translate("checkout_customer"),
                                             children: [
                                               const TextSpan(text: " "),
                                               TextSpan(
-                                                  text: widget.customer?.getName() ?? "",
-                                                  style: theme.textTheme.titleSmall),
+                                                  text: widget.customer
+                                                          ?.getName() ??
+                                                      "",
+                                                  style: theme
+                                                      .textTheme.titleSmall),
                                             ],
                                             style: theme.textTheme.bodyMedium,
                                           ),
@@ -287,9 +320,11 @@ class _CheckoutState extends State<Checkout> with TickerProviderStateMixin, Tran
                                         onPressed: _updateAddressCustomer,
                                         child: Row(
                                           children: [
-                                            const Icon(FeatherIcons.copy, size: 20),
+                                            const Icon(FeatherIcons.copy,
+                                                size: 20),
                                             const SizedBox(width: itemPadding),
-                                            Text(translate("checkout_copy_address"))
+                                            Text(translate(
+                                                "checkout_copy_address"))
                                           ],
                                         ),
                                       ),
@@ -297,7 +332,8 @@ class _CheckoutState extends State<Checkout> with TickerProviderStateMixin, Tran
                                   ),
                                   const SizedBox(height: 16),
                                 ],
-                                Text(translate('checkout_billing_detail'), style: theme.textTheme.titleLarge),
+                                Text(translate('checkout_billing_detail'),
+                                    style: theme.textTheme.titleLarge),
                                 Padding(
                                   padding: paddingVerticalMedium,
                                   child: CheckoutViewBillingAddress(
@@ -306,16 +342,19 @@ class _CheckoutState extends State<Checkout> with TickerProviderStateMixin, Tran
                                     addressBookStore: _addressBookStore,
                                   ),
                                 ),
-                                if (_cartStore.cartData?.needsShipping == true) ...[
+                                if (_cartStore.cartData?.needsShipping ==
+                                    true) ...[
                                   CheckoutViewShipToDifferentAddress(
                                     checkoutStore: _cartStore.checkoutStore,
                                   ),
-                                  if (_cartStore.checkoutStore.shipToDifferentAddress)
+                                  if (_cartStore
+                                      .checkoutStore.shipToDifferentAddress)
                                     Padding(
                                       padding: paddingVerticalMedium,
                                       child: CheckoutViewShippingAddress(
                                         cartStore: _cartStore,
-                                        checkoutAddressStore: _checkoutAddressStore,
+                                        checkoutAddressStore:
+                                            _checkoutAddressStore,
                                         addressBookStore: _addressBookStore,
                                       ),
                                     )
@@ -346,7 +385,8 @@ class _CheckoutState extends State<Checkout> with TickerProviderStateMixin, Tran
                             title: translate('checkout_payment'),
                             theme: theme,
                             onPressed: () {
-                              final isValid = _formAddressKey.currentState!.validate();
+                              final isValid =
+                                  _formAddressKey.currentState!.validate();
                               FocusManager.instance.primaryFocus?.unfocus();
                               if (!isValid) {
                                 return;
@@ -396,12 +436,14 @@ class _CheckoutState extends State<Checkout> with TickerProviderStateMixin, Tran
             ],
           ),
           Observer(
-            builder: (_) => _cartStore.checkoutStore.loading || _cartStore.checkoutStore.loadingPayment
+            builder: (_) => _cartStore.checkoutStore.loading ||
+                    _cartStore.checkoutStore.loadingPayment
                 ? Stack(
                     children: [
                       const Opacity(
                         opacity: 0.8,
-                        child: ModalBarrier(dismissible: false, color: Colors.black),
+                        child: ModalBarrier(
+                            dismissible: false, color: Colors.black),
                       ),
                       Align(
                         alignment: FractionalOffset.center,
@@ -454,7 +496,10 @@ class _CheckoutState extends State<Checkout> with TickerProviderStateMixin, Tran
                 backgroundColor: theme.colorScheme.surface,
               )
             : null,
-        child: isLoading ? entryLoading(context, color: Theme.of(context).colorScheme.onPrimary) : Text(title),
+        child: isLoading
+            ? entryLoading(context,
+                color: Theme.of(context).colorScheme.onPrimary)
+            : Text(title),
       ),
     );
   }

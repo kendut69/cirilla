@@ -6,26 +6,32 @@ part of 'country_store.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$AddressStore on AddressStoreBase, Store {
   Computed<Customer?>? _$customerComputed;
 
   @override
   Customer? get customer =>
-      (_$customerComputed ??= Computed<Customer?>(() => super.customer, name: '_AddressStore.customer')).value;
+      (_$customerComputed ??= Computed<Customer?>(() => super.customer,
+              name: 'AddressStoreBase.customer'))
+          .value;
   Computed<ObservableList<CountryData>>? _$countryComputed;
 
   @override
-  ObservableList<CountryData> get country =>
-      (_$countryComputed ??= Computed<ObservableList<CountryData>>(() => super.country, name: '_AddressStore.country'))
-          .value;
+  ObservableList<CountryData> get country => (_$countryComputed ??=
+          Computed<ObservableList<CountryData>>(() => super.country,
+              name: 'AddressStoreBase.country'))
+      .value;
   Computed<bool>? _$loadingComputed;
 
   @override
-  bool get loading => (_$loadingComputed ??= Computed<bool>(() => super.loading, name: '_AddressStore.loading')).value;
+  bool get loading => (_$loadingComputed ??=
+          Computed<bool>(() => super.loading, name: 'AddressStoreBase.loading'))
+      .value;
 
-  final _$fetchCountriesFutureAtom = Atom(name: '_AddressStore.fetchCountriesFuture');
+  late final _$fetchCountriesFutureAtom =
+      Atom(name: 'AddressStoreBase.fetchCountriesFuture', context: context);
 
   @override
   ObservableFuture<List<CountryData>?> get fetchCountriesFuture {
@@ -35,12 +41,14 @@ mixin _$AddressStore on AddressStoreBase, Store {
 
   @override
   set fetchCountriesFuture(ObservableFuture<List<CountryData>?> value) {
-    _$fetchCountriesFutureAtom.reportWrite(value, super.fetchCountriesFuture, () {
+    _$fetchCountriesFutureAtom.reportWrite(value, super.fetchCountriesFuture,
+        () {
       super.fetchCountriesFuture = value;
     });
   }
 
-  final _$_customerAtom = Atom(name: '_AddressStore._customer');
+  late final _$_customerAtom =
+      Atom(name: 'AddressStoreBase._customer', context: context);
 
   @override
   Customer? get _customer {
@@ -55,7 +63,8 @@ mixin _$AddressStore on AddressStoreBase, Store {
     });
   }
 
-  final _$_loadingAtom = Atom(name: '_AddressStore._loading');
+  late final _$_loadingAtom =
+      Atom(name: 'AddressStoreBase._loading', context: context);
 
   @override
   bool get _loading {
@@ -70,7 +79,8 @@ mixin _$AddressStore on AddressStoreBase, Store {
     });
   }
 
-  final _$_dateExpiryAtom = Atom(name: '_AddressStore._dateExpiry');
+  late final _$_dateExpiryAtom =
+      Atom(name: 'AddressStoreBase._dateExpiry', context: context);
 
   @override
   String? get _dateExpiry {
@@ -85,7 +95,8 @@ mixin _$AddressStore on AddressStoreBase, Store {
     });
   }
 
-  final _$_countryAtom = Atom(name: '_AddressStore._country');
+  late final _$_countryAtom =
+      Atom(name: 'AddressStoreBase._country', context: context);
 
   @override
   ObservableList<CountryData> get _country {
@@ -100,39 +111,50 @@ mixin _$AddressStore on AddressStoreBase, Store {
     });
   }
 
-  final _$getCountryAsyncAction = AsyncAction('_AddressStore.getCountry');
+  late final _$getCountryAsyncAction =
+      AsyncAction('AddressStoreBase.getCountry', context: context);
 
   @override
   Future<void> getCountry({Map<String, dynamic>? queryParameters}) {
-    return _$getCountryAsyncAction.run(() => super.getCountry(queryParameters: queryParameters));
+    return _$getCountryAsyncAction
+        .run(() => super.getCountry(queryParameters: queryParameters));
   }
 
-  final _$getAddressAsyncAction = AsyncAction('_AddressStore.getAddress');
+  late final _$getAddressAsyncAction =
+      AsyncAction('AddressStoreBase.getAddress', context: context);
 
   @override
   Future<void> getAddress({required String userId}) {
     return _$getAddressAsyncAction.run(() => super.getAddress(userId: userId));
   }
 
-  final _$getAddressCountryAsyncAction = AsyncAction('_AddressStore.getAddressCountry');
+  late final _$getAddressCountryAsyncAction =
+      AsyncAction('AddressStoreBase.getAddressCountry', context: context);
 
   @override
   Future<void> getAddressCountry({required String userId}) {
-    return _$getAddressCountryAsyncAction.run(() => super.getAddressCountry(userId: userId));
+    return _$getAddressCountryAsyncAction
+        .run(() => super.getAddressCountry(userId: userId));
   }
 
-  final _$postBillingAsyncAction = AsyncAction('_AddressStore.postBilling');
+  late final _$postBillingAsyncAction =
+      AsyncAction('AddressStoreBase.postBilling', context: context);
 
   @override
-  Future<void> postBilling({required String userId, Map<String, dynamic>? data}) {
-    return _$postBillingAsyncAction.run(() => super.postBilling(userId: userId, data: data));
+  Future<void> postBilling(
+      {required String userId, Map<String, dynamic>? data}) {
+    return _$postBillingAsyncAction
+        .run(() => super.postBilling(userId: userId, data: data));
   }
 
-  final _$postShippingAsyncAction = AsyncAction('_AddressStore.postShipping');
+  late final _$postShippingAsyncAction =
+      AsyncAction('AddressStoreBase.postShipping', context: context);
 
   @override
-  Future<void> postShipping({required String userId, Map<String, dynamic>? data}) {
-    return _$postShippingAsyncAction.run(() => super.postShipping(userId: userId, data: data));
+  Future<void> postShipping(
+      {required String userId, Map<String, dynamic>? data}) {
+    return _$postShippingAsyncAction
+        .run(() => super.postShipping(userId: userId, data: data));
   }
 
   @override

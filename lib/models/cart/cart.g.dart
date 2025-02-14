@@ -130,7 +130,7 @@ Map<String, dynamic> _$QuantityLimitToJson(QuantityLimit instance) =>
     };
 
 CartFees _$CartFeesFromJson(Map<String, dynamic> json) => CartFees(
-      key: json['key'] as String?,
+      key: toStr(json['key']),
       name: json['name'] as String?,
       totals: json['totals'] as Map<String, dynamic>?,
     );
@@ -141,45 +141,41 @@ Map<String, dynamic> _$CartFeesToJson(CartFees instance) => <String, dynamic>{
       'totals': instance.totals,
     };
 
-
-CartCoupons _$CartCouponsFromJson(Map<String, dynamic> json) =>
-    CartCoupons(
-          code: json['code'] as String? ?? '',
-          discountType: json['discount_type'] as String?,
-          totals: json['totals'] == null
-              ? null
-              : CartCouponTotals.fromJson(
-              json['totals'] as Map<String, dynamic>),
+CartCoupons _$CartCouponsFromJson(Map<String, dynamic> json) => CartCoupons(
+      code: json['code'] as String? ?? '',
+      discountType: json['discount_type'] as String?,
+      totals: json['totals'] == null
+          ? null
+          : CartCouponTotals.fromJson(json['totals'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$CartCouponsToJson(CartCoupons instance) =>
     <String, dynamic>{
-          'code': instance.code,
-          'discount_type': instance.discountType,
-          'totals': instance.totals,
+      'code': instance.code,
+      'discount_type': instance.discountType,
+      'totals': instance.totals,
     };
 
 CartCouponTotals _$CartCouponTotalsFromJson(Map<String, dynamic> json) =>
     CartCouponTotals(
-          totalDiscount: json['total_discount'] as String?,
-          totalDiscountTax: json['total_discount_tax'] as String?,
-          currencySymbol: json['currency_symbol'] as String?,
-          currencyDecimalSeparator: json['currency_decimal_separator'] as String?,
-          currencyThousandSeparator: json['currency_thousand_separator'] as String?,
-          currencyPrefix: json['currency_prefix'] as String?,
-          currencySuffix: json['currency_suffix'] as String?,
-          currencyMinorUnit: json['currency_minor_unit'] as int? ?? 0,
+      totalDiscount: json['total_discount'] as String?,
+      totalDiscountTax: json['total_discount_tax'] as String?,
+      currencySymbol: json['currency_symbol'] as String?,
+      currencyDecimalSeparator: json['currency_decimal_separator'] as String?,
+      currencyThousandSeparator: json['currency_thousand_separator'] as String?,
+      currencyPrefix: json['currency_prefix'] as String?,
+      currencySuffix: json['currency_suffix'] as String?,
+      currencyMinorUnit: (json['currency_minor_unit'] as num?)?.toInt() ?? 0,
     );
 
-Map<String, dynamic> _$CartCouponTotalsToJson(
-    CartCouponTotals instance) =>
+Map<String, dynamic> _$CartCouponTotalsToJson(CartCouponTotals instance) =>
     <String, dynamic>{
-          'total_discount': instance.totalDiscount,
-          'total_discount_tax': instance.totalDiscountTax,
-          'currency_symbol': instance.currencySymbol,
-          'currency_minor_unit': instance.currencyMinorUnit,
-          'currency_decimal_separator': instance.currencyDecimalSeparator,
-          'currency_thousand_separator': instance.currencyThousandSeparator,
-          'currency_prefix': instance.currencyPrefix,
-          'currency_suffix': instance.currencySuffix,
+      'total_discount': instance.totalDiscount,
+      'total_discount_tax': instance.totalDiscountTax,
+      'currency_symbol': instance.currencySymbol,
+      'currency_minor_unit': instance.currencyMinorUnit,
+      'currency_decimal_separator': instance.currencyDecimalSeparator,
+      'currency_thousand_separator': instance.currencyThousandSeparator,
+      'currency_prefix': instance.currencyPrefix,
+      'currency_suffix': instance.currencySuffix,
     };

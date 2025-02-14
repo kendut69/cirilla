@@ -12,14 +12,17 @@ AddressData _$AddressDataFromJson(Map<String, dynamic> json) => AddressData(
       shipping: AddressData._toMapString(json['shipping']),
       additional: AddressData._toMapString(json['additional']),
       format: AddressData._toMapString(json['address_format']),
-      billingStates: AddressData._toMapCountryData(json['billing_countries_states']),
+      billingStates:
+          AddressData._toMapCountryData(json['billing_countries_states']),
       billingCountries: AddressData._toCountryData(json['billing_countries']),
+      shippingStates:
+          AddressData._toMapCountryData(json['shipping_country_states']),
       shippingCountries: AddressData._toCountryData(json['shipping_countries']),
-      shippingStates: AddressData._toMapCountryData(json['shipping_country_states']),
       shippingSelected: json['shipping_countries_selected'] as String?,
     );
 
-Map<String, dynamic> _$AddressDataToJson(AddressData instance) => <String, dynamic>{
+Map<String, dynamic> _$AddressDataToJson(AddressData instance) =>
+    <String, dynamic>{
       'country': instance.country,
       'billing': instance.billing,
       'shipping': instance.shipping,

@@ -7,18 +7,21 @@ part of 'post_author.dart';
 // **************************************************************************
 
 PostAuthor _$PostAuthorFromJson(Map<String, dynamic> json) => PostAuthor(
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
       name: json['name'] as String?,
       url: json['url'] as String?,
       description: json['description'] as String?,
       link: json['link'] as String?,
       slug: json['slug'] as String?,
-      avatar: json['avatar_urls'] == null ? null : Avatar.fromJson(json['avatar_urls'] as Map<String, dynamic>),
+      avatar: json['avatar_urls'] == null
+          ? null
+          : Avatar.fromJson(json['avatar_urls'] as Map<String, dynamic>),
       meta: json['meta'] as List<dynamic>?,
-      count: json['count_posts'] as int?,
+      count: (json['count_posts'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$PostAuthorToJson(PostAuthor instance) => <String, dynamic>{
+Map<String, dynamic> _$PostAuthorToJson(PostAuthor instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'url': instance.url,

@@ -6,21 +6,23 @@ part of 'product_review.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ProductReview _$ProductReviewFromJson(Map<String, dynamic> json) => ProductReview(
-      id: json['id'] as int?,
+ProductReview _$ProductReviewFromJson(Map<String, dynamic> json) =>
+    ProductReview(
+      id: (json['id'] as num?)?.toInt(),
       dateCreated: json['date_created'] as String?,
       dateCreatedGmt: json['date_created_gmt'] as String?,
-      productId: json['product_id'] as int?,
+      productId: (json['product_id'] as num?)?.toInt(),
       status: $enumDecodeNullable(_$ProductReviewStatusEnumMap, json['status']),
       reviewer: json['reviewer'] as String?,
       reviewerEmail: json['reviewer_email'] as String?,
       review: json['review'] as String?,
-      rating: json['rating'] as int?,
+      rating: (json['rating'] as num?)?.toInt(),
       verified: json['verified'] as bool?,
       images: ProductReview._fromJsonImages(json['reviews_images']),
     )..avatar = ProductReview._fromJsonAvatar(json['reviewer_avatar_urls']);
 
-Map<String, dynamic> _$ProductReviewToJson(ProductReview instance) => <String, dynamic>{
+Map<String, dynamic> _$ProductReviewToJson(ProductReview instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'date_created': instance.dateCreated,
       'date_created_gmt': instance.dateCreatedGmt,
@@ -44,14 +46,15 @@ const _$ProductReviewStatusEnumMap = {
 };
 
 RatingCount _$RatingCountFromJson(Map<String, dynamic> json) => RatingCount(
-      r1: json['1'] as int?,
-      r2: json['2'] as int?,
-      r3: json['3'] as int?,
-      r4: json['4'] as int?,
-      r5: json['5'] as int?,
+      r1: (json['1'] as num?)?.toInt(),
+      r2: (json['2'] as num?)?.toInt(),
+      r3: (json['3'] as num?)?.toInt(),
+      r4: (json['4'] as num?)?.toInt(),
+      r5: (json['5'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$RatingCountToJson(RatingCount instance) => <String, dynamic>{
+Map<String, dynamic> _$RatingCountToJson(RatingCount instance) =>
+    <String, dynamic>{
       '1': instance.r1,
       '2': instance.r2,
       '3': instance.r3,

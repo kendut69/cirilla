@@ -416,15 +416,11 @@ mixin _$FilterStore on FilterStoreBase, Store {
   }
 
   @override
-  void clearAll(
-      {List<ProductCategory>? categories,
-      Brand? brand}) {
+  void clearAll({List<ProductCategory>? categories, Brand? brand}) {
     final _$actionInfo = _$FilterStoreBaseActionController.startAction(
         name: 'FilterStoreBase.clearAll');
     try {
-      return super.clearAll(
-          categories: categories,
-          brand: brand);
+      return super.clearAll(categories: categories, brand: brand);
     } finally {
       _$FilterStoreBaseActionController.endAction(_$actionInfo);
     }
