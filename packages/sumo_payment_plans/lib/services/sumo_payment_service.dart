@@ -19,7 +19,8 @@ class SumoPaymentService {
     dio = Dio(BaseOptions(
       baseUrl: baseUrl,
       headers: {
-        'Authorization': 'Basic ' + base64Encode(utf8.encode('$customerKey:$customerSecret')),
+        'Authorization': 'Basic ' +
+            base64Encode(utf8.encode('$customerKey:$customerSecret')),
         'Content-Type': 'application/json',
       },
     ));
@@ -29,8 +30,16 @@ class SumoPaymentService {
     try {
       final response = await dio.get('/wp-json/wc/store/v1/cart');
 
-      if (response.statusCode == 200) {
-        return PaymentPlan.fromJson(response.data['sumopaymentplans']);
+      if (response.statusCode == 200 && response.data != null) {
+        final data = response.data['sumopaymentplans'];
+        if (data is Map<String, dynamic>) {
+          return PaymentPlan.fromJson(data);
+        } else {
+          throw PaymentPlanException(
+            message: 'Invalid data format',
+            code: 'INVALID_FORMAT',
+          );
+        }
       } else {
         throw PaymentPlanException(
           message: 'Failed to load payment plan',

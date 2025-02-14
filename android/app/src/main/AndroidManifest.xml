@@ -27,7 +27,7 @@
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyAprc8OIcGzbTpILoI3OoO04XV5Erkkyr0" />
+            android:value="AIzaSyBxd9rcfmSnEFHO46UxgpQfMvIc_vYZ3kc" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
